@@ -1,0 +1,40 @@
+<section id="education" class="relative border-t border-border-subtle py-24">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div scrollAnimate class="max-w-2xl">
+      <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+        Education
+      </h2>
+    </div>
+
+    <div
+      scrollAnimate
+      class="mt-10 flex items-start gap-4 rounded-2xl border border-l-2 border-border-subtle border-l-accent bg-surface p-6"
+    >
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-elevated">
+        <lucide-icon name="graduation-cap" [size]="22" class="text-accent" />
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-text-primary">
+          Bachelor of Information Technology
+        </h3>
+        <p class="mt-1 text-sm text-text-secondary">
+          Faculty of Science, Minia University
+        </p>
+        <p class="mt-1 font-mono text-xs text-text-muted">
+          Minia, Egypt · Sep 2022 – Jun 2026
+        </p>
+      </div>
+    </div>
+
+    <div scrollAnimate class="scroll-animate-delay-1 mt-6 flex flex-wrap gap-3">
+      @for (cert of certifications; track cert) {
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary"
+        >
+          <lucide-icon name="award" [size]="15" class="text-accent" />
+          {{ cert }}
+        </span>
+      }
+    </div>
+  </div>
+</section>

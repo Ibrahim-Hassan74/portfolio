@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0f;
+  --color-surface: #13131a;
+  --color-elevated: #1c1c28;
+  --color-border-subtle: #2a2a3a;
+  --color-accent: #6c63ff;
+  --color-accent-hover: #8b83ff;
+  --color-accent-2: #a78bfa;
+  --color-text-primary: #f1f1f6;
+  --color-text-secondary: #a0a0b8;
+  --color-text-muted: #5a5a72;
+  --color-success: #22c55e;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(108, 99, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a3a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6c63ff;
+}
+
+/* Scroll fade-up animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+.scroll-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-animate-delay-1 {
+  transition-delay: 100ms;
+}
+.scroll-animate-delay-2 {
+  transition-delay: 200ms;
+}
+.scroll-animate-delay-3 {
+  transition-delay: 300ms;
+}
+.scroll-animate-delay-4 {
+  transition-delay: 400ms;
+}
+
+/* Blinking typing cursor */
+@keyframes blink-cursor {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+/* Slow float for badge pills */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Grid dot pattern */
+.dot-grid {
+  background-image: radial-gradient(rgba(160, 160, 184, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Force pointer cursor on all interactive elements */
+a, button {
+  cursor: pointer !important;
+}
+
+/* Custom Swiper Pagination for Light DOM */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet:hover {
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-accent);
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Mobile Menu Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}

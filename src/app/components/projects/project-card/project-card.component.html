@@ -1,0 +1,116 @@
+<article
+  class="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-surface p-6 transition-all duration-300 hover:-translate-y-1"
+  [class.border-accent]="project.featured"
+  [class.border-border-subtle]="!project.featured"
+  [class.hover:border-accent]="!project.featured"
+  style="--tw-shadow-glow: 0 0 30px rgba(108,99,255,0.12)"
+  [style.box-shadow]="project.featured ? '0 0 30px rgba(108,99,255,0.12)' : ''"
+>
+  @if (project.featured) {
+    <div
+      class="absolute inset-x-0 top-0 h-0.5 animate-pulse bg-gradient-to-r from-accent to-transparent"
+    ></div>
+  }
+
+  @if (project.live) {
+    <div
+      class="absolute right-5 top-6 inline-flex items-center gap-1.5 rounded-full border border-success/30 bg-success/10 px-2.5 py-1 text-xs font-medium text-success"
+    >
+      <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+      Live
+    </div>
+  }
+
+  <div class="flex items-center gap-2 pr-16">
+    @if (project.featured) {
+      <lucide-icon name="star" [size]="14" class="text-accent" />
+    }
+    <span class="font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
+      {{ project.badge }}
+    </span>
+  </div>
+
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    @for (tech of project.techStack; track tech) {
+      <span
+        class="rounded-md border border-border-subtle bg-elevated px-2 py-0.5 font-mono text-[11px] text-text-secondary"
+      >
+        {{ tech }}
+      </span>
+    }
+  </div>
+
+  <h3 class="mt-5 text-xl font-semibold text-text-primary">{{ project.title }}</h3>
+  <p class="mt-1 text-sm font-medium text-accent-2">{{ project.oneLiner }}</p>
+
+  <p class="mt-4 text-sm leading-relaxed text-text-secondary">{{ project.description }}</p>
+  @if (project.ecosystem?.length) {
+    <div class="mt-4 flex flex-wrap gap-2">
+      @for (eco of project.ecosystem; track eco) {
+        <span
+          class="rounded-lg border border-border-subtle bg-elevated px-3 py-1.5 text-xs text-text-secondary"
+        >
+          {{ eco }}
+        </span>
+      }
+    </div>
+  }
+
+  @if (project.achievements.length) {
+    <ul class="mt-5 space-y-2">
+      @for (ach of project.achievements; track ach) {
+        <li class="flex gap-2 text-sm text-text-secondary">
+          <span class="shrink-0 text-accent">&rarr;</span>
+          <span>{{ ach }}</span>
+        </li>
+      }
+    </ul>
+  }
+
+  @if (project.achievementGroups?.length) {
+    <div class="mt-5 space-y-4">
+      @for (group of project.achievementGroups; track group.label) {
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-text-muted">
+            {{ group.label }}
+          </p>
+          <ul class="mt-2 space-y-2">
+            @for (item of group.items; track item) {
+              <li class="flex gap-2 text-sm text-text-secondary">
+                <span class="shrink-0 text-accent">&rarr;</span>
+                <span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  }
+
+  <div class="mt-6 flex flex-wrap gap-3 pt-2">
+    @for (gh of project.githubLinks; track gh.url) {
+      <a
+        [href]="gh.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-4 py-2 text-sm font-medium text-text-primary transition-all hover:border-accent/50 hover:text-accent"
+      >
+        <lucide-icon name="github" [size]="16" />
+        {{ gh.label }}
+      </a>
+    }
+    @for (live of project.liveLinks; track live.url) {
+      <a
+        [href]="live.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+        [class.bg-success]="project.id === 'estorex'"
+        [class.bg-accent]="project.id !== 'estorex'"
+      >
+        <lucide-icon name="external-link" [size]="16" />
+        {{ live.label }}
+      </a>
+    }
+  </div>
+</article>

@@ -1,0 +1,107 @@
+<section id="contact" class="relative border-t border-border-subtle py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+      <div scrollAnimate>
+        <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+          Let's Build <span class="text-accent">Something</span>
+        </h2>
+        <p class="mt-4 max-w-md text-sm leading-relaxed text-text-secondary sm:text-base">
+          Open to full-time opportunities, freelance projects, and technical conversations.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          <a
+            [href]="'mailto:' + contact.email"
+            class="flex items-center gap-4 text-text-secondary transition-colors hover:text-accent"
+          >
+            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
+              <lucide-icon name="mail" [size]="18" class="text-accent" />
+            </span>
+            {{ contact.email }}
+          </a>
+          <a 
+            [href]="'tel:' + contact.phone"
+            class="flex items-center gap-4 text-text-secondary transition-colors hover:text-accent"
+          >
+            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
+              <lucide-icon name="phone" [size]="18" class="text-accent" />
+            </span>
+            {{ contact.phone }}
+          </a>
+          <div class="flex items-center gap-4 text-text-secondary">
+            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
+              <lucide-icon name="map-pin" [size]="18" class="text-accent" />
+            </span>
+            {{ contact.location }}
+          </div>
+        </div>
+
+        <div class="mt-8 flex gap-3">
+          <a
+            [href]="contact.github"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="flex h-11 w-11 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+          >
+            <lucide-icon name="github" [size]="20" />
+          </a>
+          <a
+            [href]="contact.linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="flex h-11 w-11 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+          >
+            <lucide-icon name="linkedin" [size]="20" />
+          </a>
+        </div>
+      </div>
+
+      <div scrollAnimate class="scroll-animate-delay-1">
+        <div class="rounded-2xl border border-border-subtle bg-surface p-6 sm:p-8">
+          <div class="flex flex-col gap-4">
+            <a
+              [href]="contact.cv"
+              download
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-1 hover:bg-accent-hover"
+            >
+              <lucide-icon name="download" [size]="18" />
+              Download CV
+            </a>
+            <a
+              [href]="contact.github"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-all hover:-translate-y-1 hover:border-accent/50"
+            >
+              <lucide-icon name="github" [size]="18" />
+              View GitHub Profile
+            </a>
+            <a
+              [href]="contact.linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-all hover:-translate-y-1 hover:border-accent/50"
+            >
+              <lucide-icon name="linkedin" [size]="18" />
+              Connect on LinkedIn
+            </a>
+          </div>
+
+          <div
+            class="mt-6 flex items-center justify-center gap-2 rounded-lg border border-success/20 bg-success/5 px-4 py-3 text-sm text-success"
+          >
+            <span class="relative flex h-2 w-2">
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"
+              ></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
+            </span>
+            Available for new projects
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
