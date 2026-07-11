@@ -1,14 +1,13 @@
 <section id="education" class="relative border-t border-border-subtle py-24">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div scrollAnimate class="max-w-2xl">
+    <div class="edu-header max-w-2xl opacity-0">
       <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
         Education
       </h2>
     </div>
 
     <div
-      scrollAnimate
-      class="mt-10 flex items-start gap-4 rounded-2xl border border-l-2 border-border-subtle border-l-accent bg-surface p-6"
+      class="edu-card mt-10 flex items-start gap-4 rounded-2xl border border-l-2 border-border-subtle border-l-accent bg-surface p-6 opacity-0 translate-y-4"
     >
       <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-elevated">
         <lucide-icon name="graduation-cap" [size]="22" class="text-accent" />
@@ -26,10 +25,10 @@
       </div>
     </div>
 
-    <div scrollAnimate class="scroll-animate-delay-1 mt-6 flex flex-wrap gap-3">
+    <div class="mt-6 flex flex-wrap gap-3">
       @for (cert of certifications; track cert) {
         <span
-          class="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary"
+          class="edu-cert inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary opacity-0 translate-y-2"
         >
           <lucide-icon name="award" [size]="15" class="text-accent" />
           {{ cert }}

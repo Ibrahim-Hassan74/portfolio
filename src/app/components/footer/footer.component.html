@@ -2,7 +2,7 @@
   <div
     class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 sm:px-6 lg:flex-row lg:justify-between lg:px-8"
   >
-    <p class="text-center text-sm text-text-muted">
+    <p class="footer-text text-center text-sm text-text-muted opacity-0">
       &copy; 2026 Ibrahim Hassan · Built with Angular
     </p>
 
@@ -11,8 +11,9 @@
         [href]="contact.github"
         target="_blank"
         rel="noopener noreferrer"
+        magnetic
         aria-label="GitHub"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:border-accent/50 hover:text-accent"
+        class="footer-link flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-accent/50 hover:text-accent opacity-0"
       >
         <lucide-icon name="github" [size]="17" />
       </a>
@@ -20,15 +21,17 @@
         [href]="contact.linkedin"
         target="_blank"
         rel="noopener noreferrer"
+        magnetic
         aria-label="LinkedIn"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:border-accent/50 hover:text-accent"
+        class="footer-link flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-accent/50 hover:text-accent opacity-0"
       >
         <lucide-icon name="linkedin" [size]="17" />
       </a>
       <a
         [href]="'mailto:' + contact.email"
+        magnetic
         aria-label="Email"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:border-accent/50 hover:text-accent"
+        class="footer-link flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-accent/50 hover:text-accent opacity-0"
       >
         <lucide-icon name="mail" [size]="17" />
       </a>
@@ -36,10 +39,11 @@
   </div>
 
   <button
+    #scrollTopBtn
     type="button"
     (click)="scrollTop()"
     aria-label="Back to top"
-    class="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-all hover:-translate-y-1 hover:bg-accent-hover"
+    class="scroll-top-btn fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-colors hover:bg-accent-hover opacity-0 pointer-events-none translate-y-8"
   >
     <lucide-icon name="chevron-up" [size]="20" />
   </button>

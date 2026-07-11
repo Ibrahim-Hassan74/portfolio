@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, inject } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { CONTACT } from '../../data/portfolio.data';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { GSAP_EASING } from '../../utils/gsap.utils';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [LucideAngularModule, ScrollAnimateDirective],
+  imports: [LucideAngularModule],
   templateUrl: './about.component.html',
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewInit, OnDestroy {
   readonly profileImage = CONTACT.profileImage;
   readonly quickFacts: { icon: string; text: string; url?: string }[] = [
     { icon: 'graduation-cap', text: 'B.Sc IT, Minia University, 2026' },
@@ -35,4 +37,88 @@ export class AboutComponent {
       text: '300+ xUnit cases, Moq, FluentAssertions, integration testing',
     },
   ];
+
+  private el = inject(ElementRef);
+  private zone = inject(NgZone);
+  private ctx!: gsap.Context;
+
+  ngAfterViewInit() {
+    if (typeof window === 'undefined') return;
+
+    this.zone.runOutsideAngular(() => {
+      this.ctx = gsap.context(() => {
+        
+        // Image parallax effect on scroll
+        gsap.to('.about-img', {
+          yPercent: 15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: this.el.nativeElement,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.el.nativeElement,
+            start: 'top 75%',
+            toggleActions: 'play reverse play reverse'
+          }
+        });
+
+        // Image and location badge
+        tl.to('.about-img', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: GSAP_EASING.elegant
+        });
+
+        // Stagger text items
+        tl.to('.about-text', {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: GSAP_EASING.snappy
+        }, '-=0.4');
+
+        // Stagger quick facts
+        tl.to('.about-fact', {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: GSAP_EASING.bouncy
+        }, '-=0.2');
+
+        // Stagger core values
+        tl.to('.about-value', {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: GSAP_EASING.elegant
+        }, '-=0.2');
+
+        // Hover effect for values to replace Tailwind's -translate-y-1
+        const valuesCards = gsap.utils.toArray('.about-value');
+        valuesCards.forEach((card: any) => {
+          card.addEventListener('mouseenter', () => {
+            gsap.to(card, { y: -4, duration: 0.3, ease: GSAP_EASING.elegant });
+          });
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, { y: 0, duration: 0.3, ease: GSAP_EASING.bouncy });
+          });
+        });
+
+      }, this.el.nativeElement);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.ctx) this.ctx.revert();
+  }
 }

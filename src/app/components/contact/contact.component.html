@@ -1,7 +1,13 @@
-<section id="contact" class="relative border-t border-border-subtle py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="contact" class="relative border-t border-border-subtle py-24 overflow-hidden">
+  
+  <!-- Subtle background glow -->
+  <div class="contact-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none opacity-0"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-      <div scrollAnimate>
+      
+      <!-- Left Info -->
+      <div class="contact-info opacity-0 translate-y-8">
         <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
           Let's Build <span class="text-accent">Something</span>
         </h2>
@@ -10,25 +16,35 @@
         </p>
 
         <div class="mt-8 space-y-4">
-          <a
-            [href]="'mailto:' + contact.email"
-            class="flex items-center gap-4 text-text-secondary transition-colors hover:text-accent"
-          >
-            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
-              <lucide-icon name="mail" [size]="18" class="text-accent" />
-            </span>
-            {{ contact.email }}
-          </a>
+          <div class="flex items-center gap-4">
+            <a
+              [href]="'mailto:' + contact.email"
+              class="contact-link flex items-center gap-4 text-text-secondary transition-colors hover:text-accent opacity-0 translate-y-4"
+            >
+              <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
+                <lucide-icon name="mail" [size]="18" class="text-accent" />
+              </span>
+              {{ contact.email }}
+            </a>
+            <button
+              (click)="copyEmail()"
+              class="ml-2 text-text-muted hover:text-accent transition-colors focus:outline-none"
+              title="Copy Email"
+            >
+              <lucide-icon [name]="copied() ? 'check' : 'copy'" [size]="16" [class.text-success]="copied()" />
+            </button>
+          </div>
+          
           <a 
             [href]="'tel:' + contact.phone"
-            class="flex items-center gap-4 text-text-secondary transition-colors hover:text-accent"
+            class="contact-link flex items-center gap-4 text-text-secondary transition-colors hover:text-accent opacity-0 translate-y-4"
           >
             <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
               <lucide-icon name="phone" [size]="18" class="text-accent" />
             </span>
             {{ contact.phone }}
           </a>
-          <div class="flex items-center gap-4 text-text-secondary">
+          <div class="contact-link flex items-center gap-4 text-text-secondary opacity-0 translate-y-4">
             <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated">
               <lucide-icon name="map-pin" [size]="18" class="text-accent" />
             </span>
@@ -41,8 +57,9 @@
             [href]="contact.github"
             target="_blank"
             rel="noopener noreferrer"
+            magnetic
             aria-label="GitHub"
-            class="flex h-11 w-11 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+            class="contact-social flex h-11 w-11 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-accent/50 hover:text-accent opacity-0 scale-90"
           >
             <lucide-icon name="github" [size]="20" />
           </a>
@@ -50,21 +67,27 @@
             [href]="contact.linkedin"
             target="_blank"
             rel="noopener noreferrer"
+            magnetic
             aria-label="LinkedIn"
-            class="flex h-11 w-11 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+            class="contact-social flex h-11 w-11 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-accent/50 hover:text-accent opacity-0 scale-90"
           >
             <lucide-icon name="linkedin" [size]="20" />
           </a>
         </div>
       </div>
 
-      <div scrollAnimate class="scroll-animate-delay-1">
-        <div class="rounded-2xl border border-border-subtle bg-surface p-6 sm:p-8">
-          <div class="flex flex-col gap-4">
+      <!-- Right CTA -->
+      <div class="contact-cta opacity-0 translate-x-8">
+        <div class="rounded-2xl border border-border-subtle bg-surface p-6 sm:p-8 relative overflow-hidden group">
+          
+          <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <div class="relative flex flex-col gap-4">
             <a
               [href]="contact.cv"
               download
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-1 hover:bg-accent-hover"
+              magnetic
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
             >
               <lucide-icon name="download" [size]="18" />
               Download CV
@@ -73,7 +96,8 @@
               [href]="contact.github"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-all hover:-translate-y-1 hover:border-accent/50"
+              magnetic
+              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-colors hover:border-accent/50"
             >
               <lucide-icon name="github" [size]="18" />
               View GitHub Profile
@@ -82,7 +106,8 @@
               [href]="contact.linkedin"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-all hover:-translate-y-1 hover:border-accent/50"
+              magnetic
+              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-colors hover:border-accent/50"
             >
               <lucide-icon name="linkedin" [size]="18" />
               Connect on LinkedIn

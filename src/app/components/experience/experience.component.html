@@ -1,36 +1,43 @@
 <section id="experience" class="relative border-t border-border-subtle py-24">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div scrollAnimate class="max-w-2xl">
+    <div class="exp-header max-w-2xl opacity-0">
       <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
         Experience
       </h2>
     </div>
 
-    <div scrollAnimate class="mt-12">
-      <div class="relative border-l-2 border-border-subtle pl-8">
+    <div class="mt-12">
+      <!-- The relative container for the timeline -->
+      <div class="relative pl-8">
+        
+        <!-- The drawing line -->
+        <div class="exp-line absolute left-0 top-0 bottom-0 w-0.5 bg-border-subtle origin-top scale-y-0"></div>
+
         <span
-          class="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full border-2 border-accent bg-background"
+          class="exp-dot absolute -left-[7px] top-1.5 h-4 w-4 rounded-full border-2 border-accent bg-background opacity-0 scale-50"
         ></span>
 
-        <p class="font-mono text-sm text-accent">Oct 2025 – Nov 2025</p>
+        <div class="exp-content opacity-0 translate-y-4">
+          <p class="font-mono text-sm text-accent">Oct 2025 – Nov 2025</p>
 
-        <div class="mt-3 flex items-start gap-3">
-          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-elevated">
-            <lucide-icon name="server" [size]="18" class="text-accent" />
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-text-primary">
-              Backend Developer — Freelance
-            </h3>
-            <p class="text-sm text-text-secondary">
-              Laundry Management System · Cairo, Egypt
-            </p>
+          <div class="mt-3 flex items-start gap-3">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-elevated">
+              <lucide-icon name="server" [size]="18" class="text-accent" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-text-primary">
+                Backend Developer — Freelance
+              </h3>
+              <p class="text-sm text-text-secondary">
+                Laundry Management System · Cairo, Egypt
+              </p>
+            </div>
           </div>
         </div>
 
         <ul class="mt-5 space-y-2">
           @for (bullet of bullets; track bullet) {
-            <li class="flex gap-2 text-sm leading-relaxed text-text-secondary">
+            <li class="exp-bullet flex gap-2 text-sm leading-relaxed text-text-secondary opacity-0 translate-y-2">
               <span class="shrink-0 text-accent">&rarr;</span>
               <span>{{ bullet }}</span>
             </li>
@@ -39,14 +46,14 @@
       </div>
     </div>
 
-    <div scrollAnimate class="scroll-animate-delay-1 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
       @for (item of highlights; track item.title) {
         @if (item.url) {
           <a
             [href]="item.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-start gap-4 rounded-xl border border-border-subtle bg-surface p-5 transition-all hover:border-accent/50 cursor-pointer"
+            class="exp-highlight group flex items-start gap-4 rounded-xl border border-border-subtle bg-surface p-5 transition-colors hover:border-accent/50 cursor-pointer opacity-0 translate-y-4"
           >
             <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-elevated transition-colors group-hover:bg-accent/10">
               <lucide-icon [name]="item.icon" [size]="20" class="text-accent" />
@@ -62,7 +69,7 @@
           </a>
         } @else {
           <div
-            class="flex items-start gap-4 rounded-xl border border-border-subtle bg-surface p-5 transition-all hover:border-accent/50"
+            class="exp-highlight flex items-start gap-4 rounded-xl border border-border-subtle bg-surface p-5 transition-colors hover:border-accent/50 opacity-0 translate-y-4"
           >
             <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-elevated">
               <lucide-icon [name]="item.icon" [size]="20" class="text-accent" />

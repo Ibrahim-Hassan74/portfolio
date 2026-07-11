@@ -1,8 +1,8 @@
 <section id="about" class="relative py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
-      <div scrollAnimate class="lg:col-span-2">
-        <div class="flex flex-col items-center lg:items-start">
+      <div class="lg:col-span-2">
+        <div class="about-img opacity-0 translate-y-8 flex flex-col items-center lg:items-start">
           <div class="rounded-full bg-gradient-to-br from-accent to-accent-2 p-1">
             <img
               [src]="profileImage"
@@ -24,7 +24,7 @@
               <a
                 [href]="fact.url"
                 target="_blank"
-                class="group flex items-start gap-3 rounded-xl border border-border-subtle bg-surface p-4 transition-all hover:border-accent/50 cursor-pointer"
+                class="about-fact group flex items-start gap-3 rounded-xl border border-border-subtle bg-surface p-4 transition-colors hover:border-accent/50 cursor-pointer opacity-0 translate-y-4"
               >
                 <lucide-icon [name]="fact.icon" [size]="18" class="mt-0.5 shrink-0 text-accent" />
                 <span class="text-sm text-text-secondary transition-colors group-hover:text-accent">{{ fact.text }}</span>
@@ -32,7 +32,7 @@
               </a>
             } @else {
               <div
-                class="flex items-start gap-3 rounded-xl border border-border-subtle bg-surface p-4 transition-all hover:border-accent/50"
+                class="about-fact flex items-start gap-3 rounded-xl border border-border-subtle bg-surface p-4 transition-colors hover:border-accent/50 opacity-0 translate-y-4"
               >
                 <lucide-icon [name]="fact.icon" [size]="18" class="mt-0.5 shrink-0 text-accent" />
                 <span class="text-sm text-text-secondary">{{ fact.text }}</span>
@@ -42,9 +42,9 @@
         </div>
       </div>
 
-      <div scrollAnimate class="scroll-animate-delay-1 lg:col-span-3">
-        <p class="font-mono text-sm text-accent">&lt; About Me /&gt;</p>
-        <h2 class="mt-3 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+      <div class="lg:col-span-3">
+        <p class="about-text opacity-0 translate-y-4 font-mono text-sm text-accent">&lt; About Me /&gt;</p>
+        <h2 class="about-text opacity-0 translate-y-4 mt-3 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
           I build systems that
           <span class="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent"
             >scale</span
@@ -52,17 +52,17 @@
         </h2>
 
         <div class="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary sm:text-base">
-          <p>
+          <p class="about-text opacity-0 translate-y-4">
             I'm a Fullstack Developer specializing in ASP.NET Core and Angular. I design and
             ship production systems — from real-time GPS tracking platforms to enterprise
             e-commerce APIs with payment integration and automated testing.
           </p>
-          <p>
+          <p class="about-text opacity-0 translate-y-4">
             My graduation project, Wasla, is a live, deployed transportation management system
             built for Egypt's informal microbus network. It serves real users, has a live
             Swagger API, an Angular admin dashboard, and a downloadable Flutter mobile app.
           </p>
-          <p>
+          <p class="about-text opacity-0 translate-y-4">
             I approach every system with Clean Architecture, SOLID principles, and a focus on
             long-term maintainability — not just making it work, but making it right.
           </p>
@@ -71,7 +71,7 @@
         <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
           @for (value of values; track value.title) {
             <div
-              class="rounded-xl border border-border-subtle bg-surface p-5 transition-all hover:-translate-y-1 hover:border-accent/50"
+              class="about-value rounded-xl border border-border-subtle bg-surface p-5 transition-colors hover:border-accent/50 opacity-0 translate-y-4"
             >
               <lucide-icon [name]="value.icon" [size]="22" class="text-accent" />
               <h3 class="mt-3 text-base font-semibold text-text-primary">{{ value.title }}</h3>
