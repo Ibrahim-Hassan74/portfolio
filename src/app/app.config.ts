@@ -30,6 +30,8 @@ import {
   Circle,
   ChevronLeft,
   ChevronRight,
+  Copy,
+  Check
 } from 'lucide-angular';
 import { routes } from './app.routes';
 
@@ -65,7 +67,9 @@ export const appConfig: ApplicationConfig = {
         CheckCircle,
         Circle,
         ChevronLeft,
-        ChevronRight
+        ChevronRight,
+        Copy,
+        Check
       }),
     ),
   ],

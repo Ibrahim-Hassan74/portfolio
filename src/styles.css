@@ -50,31 +50,7 @@ body {
   background: #6c63ff;
 }
 
-/* Scroll fade-up animation */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(2rem);
-  transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
-  will-change: opacity, transform;
-}
-.scroll-animate.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-.scroll-animate-delay-1 {
-  transition-delay: 100ms;
-}
-.scroll-animate-delay-2 {
-  transition-delay: 200ms;
-}
-.scroll-animate-delay-3 {
-  transition-delay: 300ms;
-}
-.scroll-animate-delay-4 {
-  transition-delay: 400ms;
-}
+
 
 /* Blinking typing cursor */
 @keyframes blink-cursor {
@@ -140,17 +116,4 @@ a, button {
   border-radius: 4px;
 }
 
-/* Mobile Menu Animation */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.animate-slide-down {
-  animation: slideDown 0.3s ease-out forwards;
-}
+
