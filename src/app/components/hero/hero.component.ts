@@ -1,32 +1,39 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
+  NgZone,
   OnDestroy,
   OnInit,
   computed,
+  inject,
   signal,
 } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { CONTACT } from '../../data/portfolio.data';
+import { gsap } from 'gsap';
+import { GSAP_EASING } from '../../utils/gsap.utils';
+import { MagneticDirective } from '../../directives/magnetic.directive';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, MagneticDirective],
   templateUrl: './hero.component.html',
 })
-export class HeroComponent implements OnInit, OnDestroy {
+export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly contact = CONTACT;
 
   readonly stats = [
-    { value: '8+', label: 'Projects' },
-    { value: '5', label: 'Live Demos' },
-    { value: '300+', label: 'Test Cases' },
-    { value: 'ECPC', label: 'Finalist' },
+    { num: 8, suffix: '+', text: '', label: 'Projects', isNumber: true },
+    { num: 5, suffix: '', text: '', label: 'Live Demos', isNumber: true },
+    { num: 300, suffix: '+', text: '', label: 'Test Cases', isNumber: true },
+    { num: 0, suffix: '', text: 'ECPC', label: 'Finalist', isNumber: false },
   ];
 
   readonly techBadges = ['.NET', 'Angular', 'SignalR', 'Redis', 'Docker'];
 
-  // .NET C# snippet — shows first
+  // .NET C# snippet
   private readonly dotnetLines: { html: string }[] = [
     { html: '<span class="text-text-muted">// Wasla — QR Check-In Hub</span>' },
     { html: '<span class="text-accent-2">[Authorize</span>(<span class="text-success">Roles</span> = <span class="text-accent-2">nameof</span>(<span class="text-[#e0b0ff]">UserRole</span>.<span class="text-[#7fd3ff]">Driver</span>))<span class="text-accent-2">]</span>' },
@@ -60,9 +67,8 @@ export class HeroComponent implements OnInit, OnDestroy {
     { html: '' },
   ];
 
-  // 'dotnet' shows first
   activeSnippet = signal<'dotnet' | 'angular'>('dotnet');
-  snippetVisible = signal(true);
+  typedSnippetLines = signal<{html: string}[]>([]);
 
   readonly snippetLabel = computed(() =>
     this.activeSnippet() === 'dotnet' ? 'QueueHub.cs' : 'queue.service.ts',
@@ -83,15 +89,92 @@ export class HeroComponent implements OnInit, OnDestroy {
   private charIndex = 0;
   private deleting = false;
   private timer?: ReturnType<typeof setTimeout>;
+  private snippetTimer?: ReturnType<typeof setTimeout>;
+  
+  private el = inject(ElementRef);
+  private zone = inject(NgZone);
+  private ctx!: gsap.Context;
 
   ngOnInit(): void {
     this.tick();
-    this.scheduleSnippetSwitch();
+    this.typeSnippet();
+  }
+
+  ngAfterViewInit() {
+    if (typeof window === 'undefined') return;
+
+    this.zone.runOutsideAngular(() => {
+      this.ctx = gsap.context(() => {
+        const tl = gsap.timeline({ delay: 0.2 });
+
+        // Background glows
+        tl.to('.hero-bg', {
+          opacity: 0.4,
+          duration: 2,
+          ease: 'power2.inOut',
+          stagger: 0.2
+        }, 0);
+
+        // Continuous subtle float on background
+        gsap.to('.hero-bg', {
+          y: -20,
+          x: 10,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          stagger: 0.5
+        });
+
+        // Stagger in text and buttons
+        tl.from('.hero-item', {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: GSAP_EASING.snappy
+        }, 0.2);
+
+        // Visual (Code snippet) entrance
+        tl.from('.hero-visual', {
+          scale: 0.95,
+          opacity: 0,
+          y: 30,
+          duration: 1.2,
+          ease: GSAP_EASING.elegant
+        }, 0.6);
+
+        // Tech badges stagger
+        tl.from('.hero-badge', {
+          scale: 0.8,
+          opacity: 0,
+          y: 10,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: GSAP_EASING.bouncy
+        }, 1.2);
+
+        // Animate numbers
+        const statNumbers = gsap.utils.toArray('.stat-number');
+        statNumbers.forEach((el: any) => {
+          const target = parseInt(el.getAttribute('data-target') || '0', 10);
+          gsap.to(el, {
+            innerHTML: target,
+            duration: 3.5,
+            delay: 1.2,
+            snap: { innerHTML: 1 },
+            ease: "power2.out"
+          });
+        });
+        
+      }, this.el.nativeElement);
+    });
   }
 
   ngOnDestroy(): void {
     if (this.timer) clearTimeout(this.timer);
-    if (this.snippetTimer) clearInterval(this.snippetTimer);
+    if (this.snippetTimer) clearTimeout(this.snippetTimer);
+    if (this.ctx) this.ctx.revert();
   }
 
   private tick(): void {
@@ -117,19 +200,77 @@ export class HeroComponent implements OnInit, OnDestroy {
     this.timer = setTimeout(() => this.tick(), this.deleting ? 45 : 90);
   }
 
-  private snippetTimer?: ReturnType<typeof setInterval>;
+  private tokenizeHtml(html: string): string[] {
+    const tokens: string[] = [];
+    let currentToken = '';
+    let inTag = false;
+    let inEntity = false;
 
-  private scheduleSnippetSwitch(): void {
-    this.snippetTimer = setInterval(() => {
-      // fade out
-      this.snippetVisible.set(false);
-      setTimeout(() => {
-        // swap snippet
-        this.activeSnippet.update(s => (s === 'dotnet' ? 'angular' : 'dotnet'));
-        // fade in
-        this.snippetVisible.set(true);
-      }, 350);
-    }, 5000);
+    for (let i = 0; i < html.length; i++) {
+      const char = html[i];
+      if (char === '<') {
+        inTag = true;
+        currentToken = char;
+      } else if (char === '>') {
+        inTag = false;
+        currentToken += char;
+        tokens.push(currentToken);
+        currentToken = '';
+      } else if (char === '&' && !inTag) {
+        inEntity = true;
+        currentToken = char;
+      } else if (char === ';' && inEntity) {
+        inEntity = false;
+        currentToken += char;
+        tokens.push(currentToken);
+        currentToken = '';
+      } else if (inTag || inEntity) {
+        currentToken += char;
+      } else {
+        tokens.push(char);
+      }
+    }
+    return tokens;
+  }
+
+  private typeSnippet(): void {
+    const lines = this.visibleLines();
+    const tokenizedLines = lines.map(l => this.tokenizeHtml(l.html));
+    
+    let currentLineIdx = 0;
+    let currentTokenIdx = 0;
+    const currentRenderedLines: {html: string}[] = [];
+    
+    const typeInterval = setInterval(() => {
+      if (currentLineIdx >= tokenizedLines.length) {
+        clearInterval(typeInterval);
+        
+        this.snippetTimer = setTimeout(() => {
+          this.activeSnippet.update(s => (s === 'dotnet' ? 'angular' : 'dotnet'));
+          this.typeSnippet(); 
+        }, 4000);
+        return;
+      }
+
+      const tokens = tokenizedLines[currentLineIdx];
+      
+      if (currentTokenIdx === 0) {
+        currentRenderedLines.push({ html: '' });
+      }
+
+      if (tokens.length > 0) {
+        currentRenderedLines[currentLineIdx].html += tokens[currentTokenIdx];
+      }
+      
+      this.typedSnippetLines.set([...currentRenderedLines]);
+
+      currentTokenIdx++;
+
+      if (currentTokenIdx >= tokens.length) {
+        currentLineIdx++;
+        currentTokenIdx = 0;
+      }
+    }, 15); 
   }
 
   scrollTo(id: string): void {

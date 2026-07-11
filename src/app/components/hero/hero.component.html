@@ -3,19 +3,16 @@
   class="relative flex min-h-screen items-center overflow-hidden pt-16"
 >
   <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -left-40 -top-20 h-[600px] w-[600px] rounded-full blur-3xl"
-    style="background: radial-gradient(circle, rgba(108,99,255,0.10), transparent 70%)"
+    class="hero-bg pointer-events-none absolute -left-40 -top-20 h-[600px] w-[600px] rounded-full blur-3xl opacity-0"
+    style="background: radial-gradient(circle, rgba(108,99,255,0.15), transparent 70%)"
   ></div>
   <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -bottom-32 -right-32 h-[400px] w-[400px] rounded-full blur-3xl"
-    style="background: radial-gradient(circle, rgba(108,99,255,0.07), transparent 70%)"
+    class="hero-bg pointer-events-none absolute -bottom-32 -right-32 h-[400px] w-[400px] rounded-full blur-3xl opacity-0"
+    style="background: radial-gradient(circle, rgba(108,99,255,0.10), transparent 70%)"
   ></div>
 
   <div
-    aria-hidden="true"
-    class="dot-grid pointer-events-none absolute inset-0 opacity-40"
+    class="hero-bg dot-grid pointer-events-none absolute inset-0 opacity-0"
   ></div>
 
   <div
@@ -23,7 +20,7 @@
   >
     <div class="lg:col-span-3">
       <div
-        class="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface px-3 py-1.5 text-xs font-medium text-text-secondary"
+        class="hero-item inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface px-3 py-1.5 text-xs font-medium text-text-secondary"
       >
         <span class="relative flex h-2 w-2">
           <span
@@ -35,7 +32,7 @@
       </div>
 
       <h1
-        class="mt-6 text-balance text-5xl font-black tracking-tight text-text-primary sm:text-6xl lg:text-7xl"
+        class="hero-item mt-6 text-balance text-5xl font-black tracking-tight text-text-primary sm:text-6xl lg:text-7xl"
       >
         Ibrahim
         <span
@@ -44,28 +41,29 @@
         >
       </h1>
 
-      <p class="mt-4 text-xl font-semibold text-text-secondary sm:text-2xl">
+      <p class="hero-item mt-4 text-xl font-semibold text-text-secondary sm:text-2xl">
         Fullstack Developer
       </p>
-      <p class="mt-1 font-mono text-sm text-text-muted">
+      <p class="hero-item mt-1 font-mono text-sm text-text-muted">
         .NET · Angular
       </p>
 
-      <p class="mt-4 font-mono text-base text-accent sm:text-lg">
+      <p class="hero-item mt-4 font-mono text-base text-accent sm:text-lg">
         {{ typedText() }}<span class="typing-cursor bg-accent">&nbsp;</span>
       </p>
 
-      <p class="mt-6 max-w-2xl text-pretty text-sm leading-relaxed text-text-secondary sm:text-base">
+      <p class="hero-item mt-6 max-w-2xl text-pretty text-sm leading-relaxed text-text-secondary sm:text-base">
         Fullstack Developer and ECPC Finalist with hands-on experience building
         real-time platforms, encrypted authentication systems, and multi-service
         architectures using ASP.NET Core, Clean Architecture, and Angular.
       </p>
 
-      <div class="mt-8 flex flex-wrap items-center gap-4">
+      <div class="hero-item mt-8 flex flex-wrap items-center gap-4">
         <button
           type="button"
           (click)="scrollTo('projects')"
-          class="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-1 hover:bg-accent-hover"
+          magnetic
+          class="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
         >
           View My Work
           <lucide-icon name="arrow-right" [size]="18" />
@@ -73,7 +71,8 @@
         <a
           [href]="contact.cv"
           download
-          class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-5 py-3 text-sm font-semibold text-text-primary transition-all hover:-translate-y-1 hover:border-accent/50"
+          magnetic
+          class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-5 py-3 text-sm font-semibold text-text-primary transition-colors hover:bg-elevated hover:border-accent/50 hover:text-accent"
         >
           <lucide-icon name="download" [size]="18" />
           Download CV
@@ -82,6 +81,7 @@
           [href]="contact.github"
           target="_blank"
           rel="noopener noreferrer"
+          magnetic
           class="inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-accent"
         >
           <lucide-icon name="github" [size]="18" />
@@ -89,10 +89,16 @@
         </a>
       </div>
 
-      <div class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <div class="hero-item mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
         @for (stat of stats; track stat.label) {
           <div>
-            <div class="text-3xl font-black text-accent">{{ stat.value }}</div>
+            <div class="text-3xl font-black text-accent">
+              @if (stat.isNumber) {
+                <span class="stat-number" [attr.data-target]="stat.num">0</span>{{ stat.suffix }}
+              } @else {
+                {{ stat.text }}
+              }
+            </div>
             <div class="mt-1 text-xs font-medium uppercase tracking-wide text-text-muted">
               {{ stat.label }}
             </div>
@@ -101,9 +107,9 @@
       </div>
     </div>
 
-    <div class="lg:col-span-2">
+    <div class="hero-visual lg:col-span-2 w-full min-w-0">
       <div
-        class="overflow-hidden rounded-xl border border-border-subtle bg-surface shadow-2xl"
+        class="w-full overflow-hidden rounded-xl border border-border-subtle bg-surface shadow-2xl"
         style="box-shadow: 0 0 40px rgba(108,99,255,0.10)"
       >
         <div class="flex items-center gap-2 border-b border-border-subtle bg-elevated px-4 py-3">
@@ -113,15 +119,14 @@
           <span class="ml-3 font-mono text-xs text-text-muted">{{ snippetLabel() }}</span>
         </div>
         <pre
-          class="overflow-x-auto p-4 font-mono text-xs leading-relaxed transition-opacity duration-300 sm:text-[13px]"
-          [class.opacity-0]="!snippetVisible()"
-        ><code>@for (line of visibleLines(); track $index) {<span [innerHTML]="line.html"></span>
+          class="w-full overflow-x-auto p-4 font-mono text-xs leading-relaxed sm:text-[13px] min-h-[220px]"
+        ><code>@for (line of typedSnippetLines(); track $index) {<span [innerHTML]="line.html"></span>
 }</code></pre>
       </div>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         @for (badge of techBadges; track badge; let i = $index) {
           <span
-            class="animate-float rounded-full border border-border-subtle bg-elevated px-3 py-1.5 font-mono text-xs text-text-secondary"
+            class="hero-badge animate-float rounded-full border border-border-subtle bg-elevated px-3 py-1.5 font-mono text-xs text-text-secondary"
             [style.animation-delay.ms]="i * 400"
           >
             {{ badge }}
