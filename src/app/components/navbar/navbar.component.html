@@ -1,4 +1,5 @@
 <header
+  #header
   class="fixed top-0 inset-x-0 z-50 h-16 border-b border-border-subtle bg-background/80 backdrop-blur-md"
 >
   <nav class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -34,6 +35,7 @@
       <a
         [href]="cv"
         download
+        magnetic
         class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-4 py-2 text-sm font-medium text-text-primary transition-all hover:border-accent/50 hover:text-accent"
       >
         <lucide-icon name="download" [size]="16" />
@@ -42,6 +44,7 @@
       <button
         type="button"
         (click)="scrollTo('contact')"
+        magnetic
         class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-accent-hover"
       >
         Hire Me
@@ -59,41 +62,42 @@
     </button>
   </nav>
 
-  @if (mobileOpen()) {
-    <div class="fixed top-16 left-0 right-0 bottom-0 h-[calc(100vh-4rem)] flex flex-col bg-surface/98 backdrop-blur-2xl px-6 py-8 lg:hidden animate-slide-down origin-top overflow-y-auto">
-      <div class="flex flex-col gap-4">
-        @for (link of links; track link.id) {
-          <button
-            type="button"
-            (click)="scrollTo(link.id)"
-            class="rounded-xl px-4 py-4 text-left text-lg font-medium transition-all"
-            [class.bg-accent]="activeSection() === link.id"
-            [class.text-white]="activeSection() === link.id"
-            [class.text-text-secondary]="activeSection() !== link.id"
-            [class.hover:bg-elevated]="activeSection() !== link.id"
-            [class.hover:text-text-primary]="activeSection() !== link.id"
-          >
-            {{ link.label }}
-          </button>
-        }
-      </div>
-      <div class="mt-auto flex flex-col gap-4 pt-8 mb-12">
-        <a
-          [href]="cv"
-          download
-          class="inline-flex items-center justify-center gap-2 rounded-xl border border-border-subtle px-4 py-4 text-base font-medium text-text-primary transition-all hover:bg-elevated hover:text-accent hover:border-accent/50"
-        >
-          <lucide-icon name="download" [size]="20" />
-          Download CV
-        </a>
+  <div 
+    class="mobile-menu fixed top-16 left-0 right-0 bottom-0 h-[calc(100vh-4rem)] flex flex-col bg-surface/98 backdrop-blur-2xl px-6 py-8 lg:hidden origin-top overflow-y-auto"
+    style="display: none; opacity: 0;"
+  >
+    <div class="flex flex-col gap-4">
+      @for (link of links; track link.id) {
         <button
           type="button"
-          (click)="scrollTo('contact')"
-          class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-4 text-base font-semibold text-white transition-all hover:bg-accent-hover shadow-lg shadow-accent/20"
+          (click)="scrollTo(link.id)"
+          class="mobile-link rounded-xl px-4 py-4 text-left text-lg font-medium transition-all"
+          [class.bg-accent]="activeSection() === link.id"
+          [class.text-white]="activeSection() === link.id"
+          [class.text-text-secondary]="activeSection() !== link.id"
+          [class.hover:bg-elevated]="activeSection() !== link.id"
+          [class.hover:text-text-primary]="activeSection() !== link.id"
         >
-          Hire Me
+          {{ link.label }}
         </button>
-      </div>
+      }
     </div>
-  }
+    <div class="mobile-cta mt-auto flex flex-col gap-4 pt-8 mb-12">
+      <a
+        [href]="cv"
+        download
+        class="inline-flex items-center justify-center gap-2 rounded-xl border border-border-subtle px-4 py-4 text-base font-medium text-text-primary transition-all hover:bg-elevated hover:text-accent hover:border-accent/50"
+      >
+        <lucide-icon name="download" [size]="20" />
+        Download CV
+      </a>
+      <button
+        type="button"
+        (click)="scrollTo('contact')"
+        class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-4 text-base font-semibold text-white transition-all hover:bg-accent-hover shadow-lg shadow-accent/20"
+      >
+        Hire Me
+      </button>
+    </div>
+  </div>
 </header>
