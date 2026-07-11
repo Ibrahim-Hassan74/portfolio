@@ -1,6 +1,6 @@
 <section id="projects" class="relative border-t border-border-subtle py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div scrollAnimate class="max-w-2xl">
+    <div class="projects-header max-w-2xl opacity-0">
       <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
         Featured <span class="text-accent">Projects</span>
       </h2>
@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <div scrollAnimate class="mt-8 flex flex-wrap gap-2">
+    <div class="projects-tabs mt-8 flex flex-wrap gap-2 opacity-0">
       @for (tab of tabs; track tab.value) {
         <button
           type="button"
@@ -26,7 +26,7 @@
     </div>
 
     @if (filteredProjects().length) {
-      <div scrollAnimate class="relative mt-10 w-full group mb-12 flex flex-col">
+      <div class="projects-carousel relative mt-10 w-full group mb-12 flex flex-col opacity-0">
         <!-- Pagination placed before Swiper for DOM parsing timing, but ordered visually below it -->
         <div class="custom-featured-pagination mt-8 flex w-full justify-center gap-2 order-2"></div>
 
@@ -72,12 +72,12 @@
       <p class="mt-10 text-sm text-text-muted">No projects in this category yet.</p>
     }
 
-    <div scrollAnimate class="mt-24">
+    <div class="projects-small-header mt-24 opacity-0">
       <h3 class="text-2xl font-bold tracking-tight text-text-primary mb-10">
         Also Worth <span class="text-accent">Seeing</span>
       </h3>
       
-      <div class="relative w-full group mb-12 flex flex-col">
+      <div class="projects-small-carousel relative w-full group mb-12 flex flex-col opacity-0">
         <!-- Pagination placed before Swiper for DOM parsing timing, but ordered visually below it -->
         <div class="custom-small-pagination mt-8 flex w-full justify-center gap-2 order-2"></div>
 
@@ -134,7 +134,8 @@
                   [href]="small.github"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-3 py-1.5 text-sm font-medium text-text-primary transition-all hover:border-accent/50 hover:text-accent"
+                  magnetic
+                  class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-3 py-1.5 text-sm font-medium text-text-primary transition-colors hover:border-accent/50 hover:text-accent"
                 >
                   <lucide-icon name="github" [size]="15" />
                   GitHub
@@ -144,7 +145,8 @@
                     [href]="small.live"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover"
+                    magnetic
+                    class="inline-flex items-center gap-2 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
                   >
                     <lucide-icon name="external-link" [size]="15" />
                     Live Demo

@@ -1,8 +1,8 @@
 <article
-  class="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-surface p-6 transition-all duration-300 hover:-translate-y-1"
+  #card
+  class="project-card group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-surface p-6"
   [class.border-accent]="project.featured"
   [class.border-border-subtle]="!project.featured"
-  [class.hover:border-accent]="!project.featured"
   style="--tw-shadow-glow: 0 0 30px rgba(108,99,255,0.12)"
   [style.box-shadow]="project.featured ? '0 0 30px rgba(108,99,255,0.12)' : ''"
 >
@@ -93,7 +93,8 @@
         [href]="gh.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-4 py-2 text-sm font-medium text-text-primary transition-all hover:border-accent/50 hover:text-accent"
+        magnetic
+        class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-accent/50 hover:text-accent"
       >
         <lucide-icon name="github" [size]="16" />
         {{ gh.label }}
@@ -104,9 +105,12 @@
         [href]="live.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+        magnetic
+        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
         [class.bg-success]="project.id === 'estorex'"
+        [class.hover:bg-green-600]="project.id === 'estorex'"
         [class.bg-accent]="project.id !== 'estorex'"
+        [class.hover:bg-accent-hover]="project.id !== 'estorex'"
       >
         <lucide-icon name="external-link" [size]="16" />
         {{ live.label }}
