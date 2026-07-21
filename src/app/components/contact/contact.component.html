@@ -30,6 +30,7 @@
               (click)="copyEmail()"
               class="ml-2 text-text-muted hover:text-accent transition-colors focus:outline-none"
               title="Copy Email"
+              aria-label="Copy email address to clipboard"
             >
               <lucide-icon [name]="copied() ? 'check' : 'copy'" [size]="16" [class.text-success]="copied()" />
             </button>

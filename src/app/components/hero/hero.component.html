@@ -89,9 +89,9 @@
         </a>
       </div>
 
-      <div class="hero-item mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <div class="hero-item mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4" role="list" aria-label="Key statistics">
         @for (stat of stats; track stat.label) {
-          <div>
+          <div role="listitem">
             <div class="text-3xl font-black text-accent">
               @if (stat.isNumber) {
                 <span class="stat-number" [attr.data-target]="stat.num">0</span>{{ stat.suffix }}
@@ -107,9 +107,11 @@
       </div>
     </div>
 
-    <div class="hero-visual lg:col-span-2 w-full min-w-0">
+    <div class="hero-visual lg:col-span-2 w-full min-w-0" aria-label="Code demonstration">
       <div
         class="w-full overflow-hidden rounded-xl border border-border-subtle bg-surface shadow-2xl"
+        role="img"
+        aria-label="Live code snippet showing SignalR hub implementation"
         style="box-shadow: 0 0 40px rgba(108,99,255,0.10)"
       >
         <div class="flex items-center gap-2 border-b border-border-subtle bg-elevated px-4 py-3">
