@@ -116,4 +116,27 @@ a, button {
   border-radius: 4px;
 }
 
+/* Screen reader only — skip-to-content link */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
+/* Core Web Vitals: content-visibility for below-fold sections */
+/* Defers rendering of off-screen sections to improve LCP and INP */
+app-skills,
+app-projects,
+app-experience,
+app-education,
+app-contact,
+app-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
