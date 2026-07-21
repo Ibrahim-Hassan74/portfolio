@@ -1,0 +1,70 @@
+# Ibrahim Hassan — Full Stack Developer
+
+> Full Stack Developer from Cairo, Egypt specializing in ASP.NET Core, Angular, Clean Architecture, and real-time distributed systems. ECPC Finalist 2024.
+
+## About
+
+Ibrahim Hassan is a Full Stack Developer with a B.Sc. in Information Technology from Minia University (2022-2026). He specializes in building production-grade distributed systems using ASP.NET Core and Angular. He is an ECPC (Egyptian Collegiate Programming Contest) Finalist 2024 and completed a banking internship at AAIB (Arab African International Bank) in 2025.
+
+## Technical Skills
+
+- Backend: ASP.NET Core, Web API, Minimal APIs, MVC, SignalR, Hangfire, EF Core, LINQ, MediatR (CQRS), Node.js
+- Frontend: Angular, TypeScript, RxJS, Angular Signals, TailwindCSS, SSR, SCSS, HTML5
+- Databases: SQL Server, Redis, PostgreSQL
+- Auth & Security: JWT, OAuth 2.0, ASP.NET Identity, AES-GCM Encryption, RBAC
+- Testing: xUnit, Moq, FluentAssertions, Integration Testing
+- DevOps & Cloud: Docker, Docker Compose, Azure, GitHub Actions
+- Languages: C#, TypeScript, JavaScript, SQL, C++, Java
+
+## Featured Projects
+
+### Wasla — Smart Microbus Platform
+Real-time transportation management system for Egypt's informal microbus network. A 5-application distributed ecosystem with encrypted QR workflows, live GPS tracking with OSRM ETA, 4 concurrent SignalR hubs, and role-based access for 5 user types.
+- Tech: .NET, C#, SignalR, Redis, SQL Server, EF Core, Docker, JWT, Hangfire, Angular, Flutter
+- GitHub: https://github.com/Ibrahim-Hassan74/GraduationProject
+- Live API: https://smart-microbus.runasp.net/swagger
+
+### E-StoreX — Enterprise E-Commerce Platform
+Full-stack e-commerce with 140+ API endpoints, Stripe payment processing, Google & GitHub OAuth, 250+ automated test cases, 20+ lazy-loaded Angular feature modules.
+- Tech: .NET, C#, Angular, Stripe, Redis, OAuth, xUnit, Hangfire, TailwindCSS, Firebase
+- Backend: https://github.com/Ibrahim-Hassan74/EStoreX
+- Frontend: https://github.com/Ibrahim-Hassan74/E-StoreX
+- Live Demo: https://e-store-x.web.app
+
+### WhatsApp Messaging Infrastructure
+3-repo distributed messaging system: Node.js self-healing engine (Puppeteer), ASP.NET Core orchestration gateway, Angular real-time dashboard with SignalR QR codes.
+- Tech: Node.js, Puppeteer, ASP.NET Core, Angular, SignalR, Docker, NGINX, JWT
+- GitHub: https://github.com/Ibrahim-Hassan74/whatsapp-service
+
+### Laundry Management System
+Full bilingual MVC SaaS for laundry businesses — invoicing, WhatsApp notifications, and automated reporting.
+- Tech: ASP.NET Core MVC, Hangfire, EF Core, SQL Server, Arabic/English i18n, PDF
+
+## Experience
+
+### Backend Developer — Freelance (Oct–Nov 2025)
+Laundry Management System · Cairo, Egypt
+- Designed ASP.NET Core backend with EF Core for invoice and expense management
+- Implemented RBAC with ASP.NET Identity: Admin, Owner, Employee roles
+- Built automated PDF and Excel financial reporting modules
+- Delivered bilingual Arabic/English admin dashboards with MVC
+
+## Education
+
+Bachelor of Information Technology — Faculty of Science, Minia University (Sep 2022 – Jun 2026)
+
+## Awards & Certifications
+- ECPC Finalist 2024 — Egyptian Collegiate Programming Contest
+- AAIB Banking Internship 2025
+- C# Development — Udemy 2025
+- ASP.NET Core Web API — Udemy 2025
+- Angular Development — Udemy 2025
+
+## Contact
+
+- Email: ibrahimhassan.dev1@gmail.com
+- Phone: +20 102 799 2904
+- Location: Cairo, Egypt
+- GitHub: https://github.com/Ibrahim-Hassan74
+- LinkedIn: https://linkedin.com/in/ibrahim-hassan-48287b250
+- Portfolio: https://ibrahimhassan.dev/

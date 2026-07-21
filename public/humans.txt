@@ -1,0 +1,16 @@
+/* TEAM */
+Developer: Ibrahim Hassan
+Contact: ibrahimhassan.dev1@gmail.com
+GitHub: https://github.com/Ibrahim-Hassan74
+LinkedIn: https://linkedin.com/in/ibrahim-hassan-48287b250
+Location: Cairo, Egypt
+
+/* SITE */
+Last update: 2026-07-21
+Standards: HTML5, CSS3, ECMAScript 2023
+Framework: Angular 19
+Styling: TailwindCSS 4
+Animation: GSAP 3
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code

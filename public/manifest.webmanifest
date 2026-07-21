@@ -1,0 +1,21 @@
+{
+  "name": "Ibrahim Hassan — Full Stack Developer Portfolio",
+  "short_name": "Ibrahim Hassan",
+  "description": "Full Stack Developer specializing in ASP.NET Core, Angular, Clean Architecture, and real-time systems.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#6c63ff",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "IH.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
