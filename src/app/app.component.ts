@@ -8,6 +8,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -29,9 +30,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('spotlight', { static: true }) spotlight!: ElementRef<HTMLDivElement>;
   
   private zone = inject(NgZone);
+  private seo = inject(SeoService);
   private mouseMoveHandler?: (e: MouseEvent) => void;
 
   ngAfterViewInit() {
+    this.seo.initSeo();
     if (typeof window === 'undefined') return;
 
     this.zone.runOutsideAngular(() => {
