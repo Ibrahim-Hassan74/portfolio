@@ -1,0 +1,6 @@
+# Security Policy — Ibrahim Hassan Portfolio
+
+Contact: mailto:ibrahimhassan.dev1@gmail.com
+Preferred-Languages: en, ar
+Canonical: https://ibrahimhassan.dev/.well-known/security.txt
+Expires: 2027-08-02T00:00:00.000Z
