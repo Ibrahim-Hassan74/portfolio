@@ -32,11 +32,14 @@ export interface SmallProject {
 
 export interface Skill {
   name: string;
+  icon?: string;
+  isLucide?: boolean;
   featured?: boolean;
 }
 
 export interface SkillCategory {
   category: string;
+  icon: string;
   skills: Skill[];
 }
 
@@ -51,67 +54,96 @@ const FEATURED = new Set([
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     category: 'Backend',
+    icon: 'hard-drive',
     skills: [
-      'ASP.NET Core',
-      'Web API',
-      'Minimal APIs',
-      'MVC',
-      'SignalR',
-      'Hangfire',
-      'EF Core',
-      'LINQ',
-      'MediatR (CQRS)',
-      'Node.js',
-    ].map((name) => ({ name, featured: FEATURED.has(name) })),
+      { name: 'ASP.NET Core', icon: 'devicon-dotnetcore-plain', isLucide: false },
+      { name: 'Web API', icon: 'network', isLucide: true },
+      { name: 'Minimal APIs', icon: 'minimize', isLucide: true },
+      { name: 'MVC', icon: 'layers', isLucide: true },
+      { name: 'SignalR', icon: 'radio', isLucide: true },
+      { name: 'Hangfire', icon: 'clock', isLucide: true },
+      { name: 'EF Core', icon: 'database-zap', isLucide: true },
+      { name: 'LINQ', icon: 'filter', isLucide: true },
+      { name: 'MediatR (CQRS)', icon: 'arrow-left-right', isLucide: true },
+      { name: 'Node.js', icon: 'devicon-nodejs-plain', isLucide: false },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'Frontend',
+    icon: 'globe',
     skills: [
-      'Angular',
-      'TypeScript',
-      'RxJS',
-      'Angular Signals',
-      'TailwindCSS',
-      'SSR',
-      'SCSS',
-      'HTML5',
-    ].map((name) => ({ name, featured: FEATURED.has(name) })),
+      { name: 'Angular', icon: 'devicon-angularjs-plain', isLucide: false },
+      { name: 'TypeScript', icon: 'devicon-typescript-plain', isLucide: false },
+      { name: 'RxJS', icon: 'activity', isLucide: true },
+      { name: 'Angular Signals', icon: 'satellite-dish', isLucide: true },
+      { name: 'TailwindCSS', icon: 'devicon-tailwindcss-original', isLucide: false },
+      { name: 'SSR', icon: 'server-cog', isLucide: true },
+      { name: 'SCSS', icon: 'devicon-sass-original', isLucide: false },
+      { name: 'HTML5', icon: 'devicon-html5-plain', isLucide: false },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'Databases',
-    skills: ['SQL Server', 'Redis', 'PostgreSQL'].map((name) => ({ name })),
+    icon: 'database',
+    skills: [
+      { name: 'SQL Server', icon: 'devicon-microsoftsqlserver-plain', isLucide: false },
+      { name: 'Redis', icon: 'devicon-redis-plain', isLucide: false },
+      { name: 'PostgreSQL', icon: 'devicon-postgresql-plain', isLucide: false },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'Auth & Security',
-    skills: ['JWT', 'OAuth 2.0', 'ASP.NET Identity', 'AES-GCM Encryption', 'RBAC'].map(
-      (name) => ({ name }),
-    ),
+    icon: 'shield',
+    skills: [
+      { name: 'JWT', icon: 'key', isLucide: true },
+      { name: 'OAuth 2.0', icon: 'devicon-oauth-plain', isLucide: false },
+      { name: 'ASP.NET Identity', icon: 'user-check', isLucide: true },
+      { name: 'AES-GCM Encryption', icon: 'lock', isLucide: true },
+      { name: 'RBAC', icon: 'users', isLucide: true },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'Testing',
-    skills: ['xUnit', 'Moq', 'FluentAssertions', 'Integration Testing'].map((name) => ({
-      name,
-    })),
+    icon: 'test-tube',
+    skills: [
+      { name: 'xUnit', icon: 'flask-conical', isLucide: true },
+      { name: 'Moq', icon: 'ghost', isLucide: true },
+      { name: 'FluentAssertions', icon: 'check-circle', isLucide: true },
+      { name: 'Integration Testing', icon: 'combine', isLucide: true },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'DevOps & Cloud',
-    skills: ['Docker', 'Docker Compose', 'Azure', 'GitHub Actions'].map((name) => ({
-      name,
-      featured: FEATURED.has(name),
-    })),
+    icon: 'cpu',
+    skills: [
+      { name: 'Docker', icon: 'devicon-docker-plain', isLucide: false },
+      { name: 'Docker Compose', icon: 'layers', isLucide: true },
+      { name: 'Azure', icon: 'devicon-azure-plain', isLucide: false },
+      { name: 'GitHub Actions', icon: 'devicon-github-original', isLucide: false },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'Tools',
-    skills: ['Git', 'GitHub', 'Swagger/OpenAPI', 'Serilog', 'AutoMapper'].map((name) => ({
-      name,
-    })),
+    icon: 'zap',
+    skills: [
+      { name: 'Git', icon: 'devicon-git-plain', isLucide: false },
+      { name: 'GitHub', icon: 'devicon-github-original', isLucide: false },
+      { name: 'Swagger/OpenAPI', icon: 'book-open', isLucide: true },
+      { name: 'Serilog', icon: 'scroll-text', isLucide: true },
+      { name: 'AutoMapper', icon: 'copy-check', isLucide: true },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
   {
     category: 'Languages',
-    skills: ['C#', 'TypeScript', 'JavaScript', 'SQL', 'C++', 'Java'].map((name) => ({
-      name,
-      featured: FEATURED.has(name),
-    })),
+    icon: 'code-2',
+    skills: [
+      { name: 'C#', icon: 'devicon-csharp-plain', isLucide: false },
+      { name: 'TypeScript', icon: 'devicon-typescript-plain', isLucide: false },
+      { name: 'JavaScript', icon: 'devicon-javascript-plain', isLucide: false },
+      { name: 'SQL', icon: 'devicon-azuresqldatabase-plain', isLucide: false },
+      { name: 'C++', icon: 'devicon-cplusplus-plain', isLucide: false },
+      { name: 'Java', icon: 'devicon-java-plain', isLucide: false },
+    ].map((s) => ({ ...s, featured: FEATURED.has(s.name) })),
   },
 ];
 

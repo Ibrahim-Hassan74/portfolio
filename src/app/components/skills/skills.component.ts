@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, inject } from '@angular/core';
-import { SKILL_CATEGORIES } from '../../data/portfolio.data';
+import { LucideAngularModule } from 'lucide-angular';
+import { SKILL_CATEGORIES, SkillCategory } from '../../data/portfolio.data';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GSAP_EASING } from '../../utils/gsap.utils';
@@ -7,10 +8,11 @@ import { GSAP_EASING } from '../../utils/gsap.utils';
 @Component({
   selector: 'app-skills',
   standalone: true,
+  imports: [LucideAngularModule],
   templateUrl: './skills.component.html',
 })
 export class SkillsComponent implements AfterViewInit, OnDestroy {
-  readonly categories = SKILL_CATEGORIES;
+  readonly categories: SkillCategory[] = SKILL_CATEGORIES;
 
   private el = inject(ElementRef);
   private zone = inject(NgZone);
