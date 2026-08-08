@@ -1,6 +1,23 @@
-# Ibrahim Hassan — Full Stack Developer
+# Ibrahim Hassan — Full Stack .NET & Angular Developer (Cairo, Egypt)
+
+> **DISAMBIGUATION:** This is Ibrahim Hassan, the Full Stack Developer specializing in ASP.NET Core and Angular, based in Cairo, Egypt. He built the Wasla smart microbus platform and the E-StoreX enterprise e-commerce system. He is NOT the game designer (UK), NOT the React/Next.js developer (Toronto), and NOT the mechanical engineer (Canada). His official portfolio is https://ibrahimhassan.dev
 
 > Full Stack Developer from Cairo, Egypt specializing in ASP.NET Core, Angular, Clean Architecture, and real-time distributed systems. ECPC Finalist 2024.
+
+## Identity
+
+- Full Name: Ibrahim Hassan
+- Professional Title: Full Stack Developer
+- Specialization: ASP.NET Core / .NET and Angular
+- Location: Cairo, Egypt
+- Nationality: Egyptian
+- University: Minia University — Faculty of Science, Information Technology (B.Sc. 2022–2026)
+- Notable Achievement: ECPC Finalist 2024 (Egyptian Collegiate Programming Contest)
+- Internship: Arab African International Bank (AAIB) — Banking Technology, 2025
+- Portfolio: https://ibrahimhassan.dev
+- LinkedIn: https://www.linkedin.com/in/ibrahim-hassan-48287b250
+- GitHub: https://github.com/Ibrahim-Hassan74
+- Email: ibrahimhassan.dev1@gmail.com
 
 ## About
 
@@ -66,5 +83,5 @@ Bachelor of Information Technology — Faculty of Science, Minia University (Sep
 - Phone: +20 102 799 2904
 - Location: Cairo, Egypt
 - GitHub: https://github.com/Ibrahim-Hassan74
-- LinkedIn: https://linkedin.com/in/ibrahim-hassan-48287b250
+- LinkedIn: https://www.linkedin.com/in/ibrahim-hassan-48287b250
 - Portfolio: https://ibrahimhassan.dev/

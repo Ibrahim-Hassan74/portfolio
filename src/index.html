@@ -74,244 +74,282 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
   <!-- Comprehensive JSON-LD Structured Data -->
+  <!-- Entity 1: Person (standalone identity entity) -->
   <script type="application/ld+json">
-    [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://ibrahimhassan.dev/#person",
+    "name": "Ibrahim Hassan",
+    "alternateName": [
+      "Ibrahim Hassan Developer",
+      "Ibrahim Hassan .NET Developer",
+      "Ibrahim Hassan Full Stack Developer",
+      "Ibrahim Hassan Angular Developer",
+      "Ibrahim Hassan C# Developer",
+      "Ibrahim Hassan ASP.NET Core Developer"
+    ],
+    "givenName": "Ibrahim",
+    "familyName": "Hassan",
+    "jobTitle": "Full Stack Developer",
+    "description": "Full Stack Developer specializing in ASP.NET Core, Angular, Clean Architecture, and real-time distributed systems. ECPC Finalist with hands-on experience building production-grade platforms.",
+    "disambiguatingDescription": "Ibrahim Hassan is the Full Stack .NET and Angular developer from Cairo, Egypt, who built the Wasla smart microbus platform and the E-StoreX e-commerce system. He is a Minia University IT graduate and ECPC 2024 Finalist. Not to be confused with other professionals named Ibrahim Hassan.",
+    "url": "https://ibrahimhassan.dev/",
+    "image": "https://ibrahimhassan.dev/ibrahim_hassan_image.jpg",
+    "email": "mailto:ibrahimhassan.dev1@gmail.com",
+    "telephone": "+201027992904",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cairo",
+      "addressRegion": "Cairo Governorate",
+      "addressCountry": "EG"
+    },
+    "nationality": {
+      "@type": "Country",
+      "name": "Egypt"
+    },
+    "workLocation": {
+      "@type": "Place",
+      "name": "Cairo, Egypt"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "GitHub",
+      "value": "Ibrahim-Hassan74",
+      "url": "https://github.com/Ibrahim-Hassan74"
+    },
+    "sameAs": [
+      "https://github.com/Ibrahim-Hassan74",
+      "https://www.linkedin.com/in/ibrahim-hassan-48287b250",
+      "https://twitter.com/hema_official1",
+      "https://web.facebook.com/profile.php?id=100007436768274"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Minia University",
+      "department": {
+        "@type": "Organization",
+        "name": "Faculty of Science — Information Technology"
+      },
+      "url": "https://www.minia.edu.eg/"
+    },
+    "hasCredential": [
       {
-        "@context": "https://schema.org",
-        "@type": ["Person", "ProfilePage"],
-        "@id": "https://ibrahimhassan.dev/#person",
-        "name": "Ibrahim Hassan",
-        "alternateName": ["Ibrahim Hassan Developer", "Ibrahim Hassan .NET Developer"],
-        "givenName": "Ibrahim",
-        "familyName": "Hassan",
-        "jobTitle": "Full Stack Developer",
-        "additionalName": "Ibrahim-Hassan74",
-        "description": "Full Stack Developer specializing in ASP.NET Core, Angular, Clean Architecture, and real-time distributed systems. ECPC Finalist with hands-on experience building production-grade platforms.",
-        "url": "https://ibrahimhassan.dev/",
-        "image": "https://ibrahimhassan.dev/ibrahim_hassan_image.jpg",
-        "email": "mailto:ibrahimhassan.dev1@gmail.com",
-        "telephone": "+201027992904",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Cairo",
-          "addressCountry": "EG"
-        },
-        "sameAs": [
-          "https://github.com/Ibrahim-Hassan74",
-          "https://www.linkedin.com/in/ibrahim-hassan-48287b250",
-          "https://twitter.com/hema_official1",
-          "https://web.facebook.com/profile.php?id=100007436768274"
-        ],
-        "alumniOf": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Bachelor of Information Technology",
+        "credentialCategory": "degree",
+        "educationalLevel": "Bachelor's",
+        "recognizedBy": {
           "@type": "CollegeOrUniversity",
-          "name": "Minia University",
-          "department": {
-            "@type": "Organization",
-            "name": "Faculty of Science — Information Technology"
-          },
-          "url": "https://www.minia.edu.eg/"
+          "name": "Minia University"
         },
-        "hasCredential": [
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "Bachelor of Information Technology",
-            "credentialCategory": "degree",
-            "educationalLevel": "Bachelor's",
-            "recognizedBy": {
-              "@type": "CollegeOrUniversity",
-              "name": "Minia University"
-            },
-            "dateCreated": "2026"
-          }
-        ],
-        "award": [
-          "ECPC Finalist 2024 — Egyptian Collegiate Programming Contest"
-        ],
-        "knowsAbout": [
-          "ASP.NET Core", "C#", "Angular", "TypeScript", "Clean Architecture",
-          "SignalR", "Redis", "Docker", "Entity Framework Core", "SQL Server",
-          "PostgreSQL", "REST API Design", "CQRS", "MediatR", "OAuth 2.0",
-          "JWT Authentication", "xUnit Testing", "Node.js", "HTML5", "SCSS",
-          "TailwindCSS", "RxJS", "Angular Signals", "Hangfire", "Git",
-          "GitHub Actions", "Azure", "Docker Compose", "SOLID Principles",
-          "Microservices", "Real-time Systems", "WebSockets"
-        ],
-        "knowsLanguage": [
-          { "@type": "Language", "name": "Arabic", "alternateName": "ar" },
-          { "@type": "Language", "name": "English", "alternateName": "en" }
-        ],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Full Stack Developer",
-          "skills": "ASP.NET Core, Angular, C#, TypeScript, Clean Architecture, Docker, SQL Server, Redis, SignalR"
-        },
-        "memberOf": {
-          "@type": "Organization",
-          "name": "ECPC — Egyptian Collegiate Programming Contest",
-          "description": "Competitive Programming Community"
-        },
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://ibrahimhassan.dev/"
+        "dateCreated": "2026"
+      }
+    ],
+    "award": [
+      "ECPC Finalist 2024 — Egyptian Collegiate Programming Contest"
+    ],
+    "knowsAbout": [
+      "ASP.NET Core", "C#", ".NET", "Angular", "TypeScript", "Clean Architecture",
+      "SignalR", "Redis", "Docker", "Entity Framework Core", "SQL Server",
+      "PostgreSQL", "REST API Design", "CQRS", "MediatR", "OAuth 2.0",
+      "JWT Authentication", "xUnit Testing", "Node.js", "HTML5", "SCSS",
+      "TailwindCSS", "RxJS", "Angular Signals", "Hangfire", "Git",
+      "GitHub Actions", "Azure", "Docker Compose", "SOLID Principles",
+      "Microservices", "Real-time Systems", "WebSockets"
+    ],
+    "knowsLanguage": [
+      { "@type": "Language", "name": "Arabic", "alternateName": "ar" },
+      { "@type": "Language", "name": "English", "alternateName": "en" }
+    ],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Full Stack Developer",
+      "occupationalCategory": "15-1252.00",
+      "skills": "ASP.NET Core, Angular, C#, TypeScript, Clean Architecture, Docker, SQL Server, Redis, SignalR"
+    },
+    "memberOf": {
+      "@type": "Organization",
+      "name": "ECPC — Egyptian Collegiate Programming Contest",
+      "description": "Competitive Programming Community"
+    }
+  }
+  </script>
+
+  <!-- Entity 2: ProfilePage (page about the person) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://ibrahimhassan.dev/#profilepage",
+    "name": "Ibrahim Hassan — Full Stack .NET & Angular Developer | Portfolio",
+    "url": "https://ibrahimhassan.dev/",
+    "description": "Official portfolio of Ibrahim Hassan, a Full Stack Developer from Cairo, Egypt, specializing in ASP.NET Core, Angular, Clean Architecture, and real-time distributed systems.",
+    "mainEntity": { "@id": "https://ibrahimhassan.dev/#person" },
+    "isPartOf": { "@id": "https://ibrahimhassan.dev/#website" },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://ibrahimhassan.dev/ibrahim_hassan_image.jpg"
+    },
+    "breadcrumb": { "@id": "https://ibrahimhassan.dev/#breadcrumb" },
+    "inLanguage": "en",
+    "datePublished": "2025-07-01",
+    "dateModified": "2026-08-08"
+  }
+  </script>
+
+  <!-- Entity 3: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://ibrahimhassan.dev/#website",
+    "name": "Ibrahim Hassan — Full Stack Developer Portfolio",
+    "url": "https://ibrahimhassan.dev/",
+    "description": "Portfolio website of Ibrahim Hassan, a Full Stack Developer specializing in ASP.NET Core, Angular, and Clean Architecture.",
+    "publisher": { "@id": "https://ibrahimhassan.dev/#person" },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <!-- Entity 4: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://ibrahimhassan.dev/#breadcrumb",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ibrahimhassan.dev/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Entity 5: Projects (ItemList + SoftwareSourceCode) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://ibrahimhassan.dev/#projects",
+    "name": "Featured Projects by Ibrahim Hassan",
+    "description": "Production-grade software projects demonstrating full stack development expertise.",
+    "numberOfItems": 4,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "Wasla — Smart Microbus Platform",
+          "description": "Real-time transportation management system for Egypt's informal microbus network. A 5-application distributed ecosystem with encrypted QR workflows, live GPS tracking, 4 concurrent SignalR hubs, and role-based access for 5 user types.",
+          "programmingLanguage": ["C#", "TypeScript", "Dart"],
+          "runtimePlatform": "ASP.NET Core",
+          "codeRepository": "https://github.com/Ibrahim-Hassan74/GraduationProject",
+          "url": "https://smart-microbus.runasp.net/swagger",
+          "author": { "@id": "https://ibrahimhassan.dev/#person" },
+          "keywords": ["ASP.NET Core", "SignalR", "Redis", "Docker", "Angular", "Flutter", "Clean Architecture"]
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://ibrahimhassan.dev/#website",
-        "name": "Ibrahim Hassan — Full Stack Developer Portfolio",
-        "url": "https://ibrahimhassan.dev/",
-        "description": "Portfolio website of Ibrahim Hassan, a Full Stack Developer specializing in ASP.NET Core, Angular, and Clean Architecture.",
-        "publisher": { "@id": "https://ibrahimhassan.dev/#person" },
-        "inLanguage": "en"
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "E-StoreX — Enterprise E-Commerce Platform",
+          "description": "Full-stack e-commerce platform with 140+ API endpoints, Stripe payment processing, Google and GitHub OAuth, 250+ automated test cases, and 20+ lazy-loaded Angular feature modules.",
+          "programmingLanguage": ["C#", "TypeScript"],
+          "runtimePlatform": "ASP.NET Core",
+          "codeRepository": "https://github.com/Ibrahim-Hassan74/EStoreX",
+          "url": "https://e-store-x.web.app",
+          "author": { "@id": "https://ibrahimhassan.dev/#person" },
+          "keywords": ["ASP.NET Core", "Angular", "Stripe", "OAuth", "xUnit", "Firebase"]
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": "https://ibrahimhassan.dev/#webpage",
-        "name": "Ibrahim Hassan — Full Stack .NET & Angular Developer | Portfolio",
-        "url": "https://ibrahimhassan.dev/",
-        "description": "Ibrahim Hassan is a Full Stack Developer specializing in ASP.NET Core, Angular, Clean Architecture, and real-time systems. ECPC Finalist.",
-        "isPartOf": { "@id": "https://ibrahimhassan.dev/#website" },
-        "about": { "@id": "https://ibrahimhassan.dev/#person" },
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://ibrahimhassan.dev/ibrahim_hassan_image.jpg"
-        },
-        "breadcrumb": { "@id": "https://ibrahimhassan.dev/#breadcrumb" },
-        "inLanguage": "en",
-        "datePublished": "2025-07-01",
-        "dateModified": "2026-08-02"
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "WhatsApp Messaging Infrastructure",
+          "description": "3-repo distributed messaging system with a self-healing Node.js engine (Puppeteer), ASP.NET Core orchestration gateway, and Angular real-time dashboard with SignalR QR codes.",
+          "programmingLanguage": ["JavaScript", "C#", "TypeScript"],
+          "runtimePlatform": "Node.js",
+          "codeRepository": "https://github.com/Ibrahim-Hassan74/whatsapp-service",
+          "author": { "@id": "https://ibrahimhassan.dev/#person" },
+          "keywords": ["Node.js", "Puppeteer", "ASP.NET Core", "SignalR", "Docker", "NGINX"]
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "@id": "https://ibrahimhassan.dev/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://ibrahimhassan.dev/"
-          }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "@id": "https://ibrahimhassan.dev/#projects",
-        "name": "Featured Projects by Ibrahim Hassan",
-        "description": "Production-grade software projects demonstrating full stack development expertise.",
-        "numberOfItems": 4,
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-              "@type": "SoftwareSourceCode",
-              "name": "Wasla — Smart Microbus Platform",
-              "description": "Real-time transportation management system for Egypt's informal microbus network. A 5-application distributed ecosystem with encrypted QR workflows, live GPS tracking, 4 concurrent SignalR hubs, and role-based access for 5 user types.",
-              "programmingLanguage": ["C#", "TypeScript", "Dart"],
-              "runtimePlatform": "ASP.NET Core",
-              "codeRepository": "https://github.com/Ibrahim-Hassan74/GraduationProject",
-              "url": "https://smart-microbus.runasp.net/swagger",
-              "author": { "@id": "https://ibrahimhassan.dev/#person" },
-              "keywords": ["ASP.NET Core", "SignalR", "Redis", "Docker", "Angular", "Flutter", "Clean Architecture"]
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-              "@type": "SoftwareSourceCode",
-              "name": "E-StoreX — Enterprise E-Commerce Platform",
-              "description": "Full-stack e-commerce platform with 140+ API endpoints, Stripe payment processing, Google and GitHub OAuth, 250+ automated test cases, and 20+ lazy-loaded Angular feature modules.",
-              "programmingLanguage": ["C#", "TypeScript"],
-              "runtimePlatform": "ASP.NET Core",
-              "codeRepository": "https://github.com/Ibrahim-Hassan74/EStoreX",
-              "url": "https://e-store-x.web.app",
-              "author": { "@id": "https://ibrahimhassan.dev/#person" },
-              "keywords": ["ASP.NET Core", "Angular", "Stripe", "OAuth", "xUnit", "Firebase"]
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-              "@type": "SoftwareSourceCode",
-              "name": "WhatsApp Messaging Infrastructure",
-              "description": "3-repo distributed messaging system with a self-healing Node.js engine (Puppeteer), ASP.NET Core orchestration gateway, and Angular real-time dashboard with SignalR QR codes.",
-              "programmingLanguage": ["JavaScript", "C#", "TypeScript"],
-              "runtimePlatform": "Node.js",
-              "codeRepository": "https://github.com/Ibrahim-Hassan74/whatsapp-service",
-              "author": { "@id": "https://ibrahimhassan.dev/#person" },
-              "keywords": ["Node.js", "Puppeteer", "ASP.NET Core", "SignalR", "Docker", "NGINX"]
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "item": {
-              "@type": "SoftwareSourceCode",
-              "name": "Laundry Management System",
-              "description": "Full bilingual MVC SaaS for laundry businesses with invoicing, WhatsApp notifications, automated reporting, and role-based Areas for Admin/Owner/Employee workflows.",
-              "programmingLanguage": ["C#"],
-              "runtimePlatform": "ASP.NET Core MVC",
-              "author": { "@id": "https://ibrahimhassan.dev/#person" },
-              "keywords": ["ASP.NET Core MVC", "Hangfire", "EF Core", "SQL Server", "i18n"]
-            }
-          }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "@id": "https://ibrahimhassan.dev/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Who is Ibrahim Hassan?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ibrahim Hassan is a Full Stack Developer from Cairo, Egypt, specializing in ASP.NET Core and Angular. He is a B.Sc. Information Technology graduate from Minia University (2026) and an ECPC Finalist (2024). He builds production-grade distributed systems with Clean Architecture, real-time SignalR hubs, and enterprise-level testing."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What technologies does Ibrahim Hassan use?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ibrahim Hassan specializes in ASP.NET Core, C#, Angular, TypeScript, Entity Framework Core, SQL Server, Redis, Docker, SignalR, and Clean Architecture. He also works with Node.js, PostgreSQL, OAuth 2.0, JWT, xUnit, Hangfire, and Azure."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What projects has Ibrahim Hassan built?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Key projects include: Wasla (a live real-time smart microbus platform with 4 SignalR hubs and AES-GCM encrypted QR tokens), E-StoreX (a full-stack e-commerce platform with 140+ endpoints and Stripe integration), a WhatsApp Messaging Infrastructure (self-healing headless browser engine), and a Laundry Management System (bilingual MVC SaaS with automated reporting)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Ibrahim Hassan available for hire?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, Ibrahim Hassan is open to full-time opportunities, freelance projects, and technical conversations. He can be reached at ibrahimhassan.dev1@gmail.com or via LinkedIn."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is Ibrahim Hassan's education background?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ibrahim Hassan holds a Bachelor of Information Technology from the Faculty of Science, Minia University, Egypt (2022-2026). He is also an ECPC (Egyptian Collegiate Programming Contest) Finalist 2024 and completed an internship at Arab African International Bank (AAIB) in 2025."
-            }
-          }
-        ]
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "Laundry Management System",
+          "description": "Full bilingual MVC SaaS for laundry businesses with invoicing, WhatsApp notifications, automated reporting, and role-based Areas for Admin/Owner/Employee workflows.",
+          "programmingLanguage": ["C#"],
+          "runtimePlatform": "ASP.NET Core MVC",
+          "author": { "@id": "https://ibrahimhassan.dev/#person" },
+          "keywords": ["ASP.NET Core MVC", "Hangfire", "EF Core", "SQL Server", "i18n"]
+        }
       }
     ]
-    </script>
+  }
+  </script>
+
+  <!-- Entity 6: FAQ (for AI Overviews and Rich Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://ibrahimhassan.dev/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who is Ibrahim Hassan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ibrahim Hassan is a Full Stack Developer from Cairo, Egypt, specializing in ASP.NET Core and Angular. He is a B.Sc. Information Technology graduate from Minia University (2026) and an ECPC Finalist (2024). He builds production-grade distributed systems with Clean Architecture, real-time SignalR hubs, and enterprise-level testing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What technologies does Ibrahim Hassan use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ibrahim Hassan specializes in ASP.NET Core, C#, Angular, TypeScript, Entity Framework Core, SQL Server, Redis, Docker, SignalR, and Clean Architecture. He also works with Node.js, PostgreSQL, OAuth 2.0, JWT, xUnit, Hangfire, and Azure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What projects has Ibrahim Hassan built?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key projects include: Wasla (a live real-time smart microbus platform with 4 SignalR hubs and AES-GCM encrypted QR tokens), E-StoreX (a full-stack e-commerce platform with 140+ endpoints and Stripe integration), a WhatsApp Messaging Infrastructure (self-healing headless browser engine), and a Laundry Management System (bilingual MVC SaaS with automated reporting)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Ibrahim Hassan available for hire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Ibrahim Hassan is open to full-time opportunities, freelance projects, and technical conversations. He can be reached at ibrahimhassan.dev1@gmail.com or via LinkedIn."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Ibrahim Hassan's education background?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ibrahim Hassan holds a Bachelor of Information Technology from the Faculty of Science, Minia University, Egypt (2022-2026). He is also an ECPC (Egyptian Collegiate Programming Contest) Finalist 2024 and completed an internship at Arab African International Bank (AAIB) in 2025."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
