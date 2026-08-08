@@ -2,7 +2,7 @@
 Developer: Ibrahim Hassan
 Contact: ibrahimhassan.dev1@gmail.com
 GitHub: https://github.com/Ibrahim-Hassan74
-LinkedIn: https://linkedin.com/in/ibrahim-hassan-48287b250
+LinkedIn: https://linkedin.com/in/ibrahim-hassan-dev
 Location: Cairo, Egypt
 
 /* SITE */

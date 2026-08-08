@@ -354,7 +354,7 @@ export const CONTACT = {
   location: 'Cairo, Egypt',
   github: 'https://github.com/Ibrahim-Hassan74',
   githubHandle: '@Ibrahim-Hassan74',
-  linkedin: 'https://linkedin.com/in/ibrahim-hassan-48287b250',
+  linkedin: 'https://linkedin.com/in/ibrahim-hassan-dev',
   cv: 'Ibrahim_Hassan_Fullstack_Developer.pdf',
   profileImage: 'ibrahim_hassan_image.jpg',
 };

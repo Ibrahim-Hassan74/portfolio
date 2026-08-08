@@ -15,7 +15,7 @@
 - Notable Achievement: ECPC Finalist 2024 (Egyptian Collegiate Programming Contest)
 - Internship: Arab African International Bank (AAIB) — Banking Technology, 2025
 - Portfolio: https://ibrahimhassan.dev
-- LinkedIn: https://www.linkedin.com/in/ibrahim-hassan-48287b250
+- LinkedIn: https://www.linkedin.com/in/ibrahim-hassan-dev
 - GitHub: https://github.com/Ibrahim-Hassan74
 - Email: ibrahimhassan.dev1@gmail.com
 
@@ -83,5 +83,5 @@ Bachelor of Information Technology — Faculty of Science, Minia University (Sep
 - Phone: +20 102 799 2904
 - Location: Cairo, Egypt
 - GitHub: https://github.com/Ibrahim-Hassan74
-- LinkedIn: https://www.linkedin.com/in/ibrahim-hassan-48287b250
+- LinkedIn: https://www.linkedin.com/in/ibrahim-hassan-dev
 - Portfolio: https://ibrahimhassan.dev/
