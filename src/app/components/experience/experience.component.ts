@@ -44,66 +44,65 @@ export class ExperienceComponent implements AfterViewInit, OnDestroy {
 
     this.zone.runOutsideAngular(() => {
       this.ctx = gsap.context(() => {
-
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: '.exp-header',
-            endTrigger: this.el.nativeElement,
-            start: 'top 85%',
+            trigger: this.el.nativeElement,
+            start: 'top 78%',
             toggleActions: 'play none none none'
           }
         });
 
-        // Header
+        // Header slides up
         tl.to('.exp-header', {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.55,
           ease: GSAP_EASING.elegant
-        });
-
-        // Draw line down
-        tl.to('.exp-line', {
+        })
+        // Card container fades in with header so no empty box is ever shown
+        .to('.exp-card', {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          ease: GSAP_EASING.elegant
+        }, '-=0.35')
+        // Draw timeline line down
+        .to('.exp-line', {
           scaleY: 1,
-          duration: 0.8,
+          duration: 0.7,
           ease: 'power2.inOut'
-        }, '-=0.2');
-
-        // Pop in the dot
-        tl.to('.exp-dot', {
+        }, '-=0.3')
+        // Pop in timeline dot
+        .to('.exp-dot', {
           scale: 1,
           opacity: 1,
           duration: 0.4,
           ease: GSAP_EASING.bouncy
-        }, '-=0.6');
-
-        // Reveal the main content
-        tl.to('.exp-content', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: GSAP_EASING.snappy
-        }, '-=0.4');
-
-        // Stagger bullets
-        tl.to('.exp-bullet', {
+        }, '-=0.55')
+        // Reveal role header
+        .to('.exp-content', {
           y: 0,
           opacity: 1,
           duration: 0.5,
-          stagger: 0.15,
           ease: GSAP_EASING.snappy
-        }, '-=0.3');
-
-        // Highlights stagger
-        tl.to('.exp-highlight', {
+        }, '-=0.45')
+        // Stagger bullets
+        .to('.exp-bullet', {
           y: 0,
           opacity: 1,
-          duration: 0.6,
-          stagger: 0.2,
+          duration: 0.45,
+          stagger: 0.1,
+          ease: GSAP_EASING.snappy
+        }, '-=0.3')
+        // Stagger highlight cards
+        .to('.exp-highlight', {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          stagger: 0.15,
           ease: GSAP_EASING.elegant
-        }, '-=0.2');
+        }, '-=0.25');
 
-        // Hover effect for highlights
         const highlights = gsap.utils.toArray('.exp-highlight');
         highlights.forEach((hl: any) => {
           hl.addEventListener('mouseenter', () => {

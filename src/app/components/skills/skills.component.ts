@@ -27,7 +27,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.el.nativeElement,
-            start: 'top 85%',
+            start: 'top 92%',
             toggleActions: 'play none none none'
           }
         });
@@ -36,17 +36,17 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         tl.to('.skills-header', {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.35,
           ease: GSAP_EASING.elegant
-        })
+        }, 0)
         // Stagger categories
         .to('.skill-category', {
           y: 0,
           opacity: 1,
-          duration: 0.5,
-          stagger: 0.15,
+          duration: 0.4,
+          stagger: 0.06,
           ease: GSAP_EASING.snappy
-        }, '-=0.3');
+        }, 0.05);
 
         const badges = gsap.utils.toArray('.skill-badge');
         badges.forEach((badge: any) => {

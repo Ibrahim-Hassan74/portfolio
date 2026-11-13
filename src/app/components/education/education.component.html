@@ -1,6 +1,6 @@
-<section id="education" class="relative border-t border-border-subtle py-24">
+<section id="education" class="relative border-t border-border-subtle py-20">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="edu-header max-w-2xl opacity-0">
+    <div class="edu-header max-w-2xl opacity-0 translate-y-6">
       <p class="font-mono text-sm font-semibold text-accent">&lt; Academic Background /&gt;</p>
       <h2 class="mt-2 text-3xl font-black tracking-tight text-text-primary sm:text-4xl">
         Education &amp; <span class="text-gradient-aurora">Certifications</span>
@@ -8,7 +8,7 @@
     </div>
 
     <div
-      class="edu-card glass-card mt-10 flex items-start gap-4 rounded-2xl border-l-4 border-l-accent p-6 opacity-0 translate-y-4">
+      class="edu-card glass-card mt-10 flex items-start gap-4 rounded-2xl border-l-4 border-l-accent p-6 opacity-0 translate-y-6">
       <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-elevated">
         <lucide-icon name="graduation-cap" [size]="22" class="text-accent" />
       </div>
@@ -28,7 +28,7 @@
     <div class="mt-6 flex flex-wrap gap-3">
       @for (cert of certifications; track cert) {
       <span
-        class="edu-cert inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary opacity-0 translate-y-2">
+        class="edu-cert inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary opacity-0 translate-y-4">
         <lucide-icon name="award" [size]="15" class="text-accent" />
         {{ cert }}
       </span>

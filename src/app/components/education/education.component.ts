@@ -26,12 +26,10 @@ export class EducationComponent implements AfterViewInit, OnDestroy {
 
     this.zone.runOutsideAngular(() => {
       this.ctx = gsap.context(() => {
-
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: '.edu-header',
-            endTrigger: this.el.nativeElement,
-            start: 'top 85%',
+            trigger: this.el.nativeElement,
+            start: 'top 78%',
             toggleActions: 'play none none none'
           }
         });
@@ -39,22 +37,22 @@ export class EducationComponent implements AfterViewInit, OnDestroy {
         tl.to('.edu-header', {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.55,
           ease: GSAP_EASING.elegant
         })
         .to('.edu-card', {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.55,
           ease: GSAP_EASING.snappy
         }, '-=0.3')
         .to('.edu-cert', {
           y: 0,
           opacity: 1,
-          duration: 0.4,
-          stagger: 0.1,
+          duration: 0.45,
+          stagger: 0.12,
           ease: GSAP_EASING.bouncy
-        }, '-=0.2');
+        }, '-=0.25');
 
       }, this.el.nativeElement);
     });
