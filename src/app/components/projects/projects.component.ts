@@ -1,5 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, signal } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import {
   PROJECTS,
@@ -15,7 +16,7 @@ import {
   imports: [LucideAngularModule, ProjectCardComponent],
   templateUrl: './projects.component.html',
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements AfterViewInit {
   readonly tabs = PROJECT_TABS;
   readonly smallProjects = SMALL_PROJECTS;
 
@@ -45,6 +46,10 @@ export class ProjectsComponent {
     return idx >= 0 ? idx : 0;
   });
 
+  ngAfterViewInit(): void {
+    this.refreshScrollTriggers();
+  }
+
   setTab(tab: 'all' | ProjectCategory): void {
     this.activeTab.set(tab);
     const list = tab === 'all' ? PROJECTS : PROJECTS.filter((p) => p.categories.includes(tab));
@@ -52,21 +57,32 @@ export class ProjectsComponent {
       this.selectedProjectId.set(list[0].id);
       this.mobileExpandedId.set(list[0].id);
     }
+    this.refreshScrollTriggers();
   }
 
   selectProject(id: string): void {
     this.selectedProjectId.set(id);
+    this.refreshScrollTriggers();
   }
 
   toggleMobileProject(id: string): void {
     this.mobileExpandedId.update((current) => (current === id ? null : id));
+    this.refreshScrollTriggers();
   }
 
   toggleSmallProject(title: string): void {
     this.expandedSmallTitle.update((current) => (current === title ? null : title));
+    this.refreshScrollTriggers();
   }
 
   formatIndex(i: number): string {
     return (i + 1).toString().padStart(2, '0');
+  }
+
+  private refreshScrollTriggers(): void {
+    if (typeof window === 'undefined') return;
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
   }
 }

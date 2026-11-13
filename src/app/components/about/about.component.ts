@@ -51,7 +51,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.el.nativeElement,
-            start: 'top 80%',
+            start: 'top 92%',
             toggleActions: 'play none none none'
           }
         });
@@ -60,36 +60,36 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
         tl.to('.about-img', {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.45,
           ease: GSAP_EASING.elegant
-        });
+        }, 0);
 
         // Stagger text items
         tl.to('.about-text', {
           opacity: 1,
           y: 0,
-          duration: 0.6,
-          stagger: 0.1,
+          duration: 0.4,
+          stagger: 0.06,
           ease: GSAP_EASING.snappy
-        }, '-=0.4');
+        }, 0.05);
 
         // Stagger quick facts
         tl.to('.about-fact', {
           opacity: 1,
           y: 0,
-          duration: 0.5,
-          stagger: 0.1,
+          duration: 0.35,
+          stagger: 0.06,
           ease: GSAP_EASING.bouncy
-        }, '-=0.2');
+        }, 0.1);
 
         // Stagger core values
         tl.to('.about-value', {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          stagger: 0.15,
+          duration: 0.4,
+          stagger: 0.08,
           ease: GSAP_EASING.elegant
-        }, '-=0.2');
+        }, 0.12);
 
         // Hover effect for values to replace Tailwind's -translate-y-1
         const valuesCards = gsap.utils.toArray('.about-value');

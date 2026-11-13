@@ -25,22 +25,19 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
 
     this.zone.runOutsideAngular(() => {
       this.ctx = gsap.context(() => {
-
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: '.contact-info',
-            endTrigger: this.el.nativeElement,
-            start: 'top 85%',
+            trigger: this.el.nativeElement,
+            start: 'top 78%',
             toggleActions: 'play none none none'
           }
         });
 
-        // Background glow entrance and continuous floating
         tl.to('.contact-glow', {
           opacity: 1,
-          duration: 1.5,
+          duration: 1.2,
           ease: 'power2.inOut'
-        });
+        }, 0);
 
         gsap.to('.contact-glow', {
           y: -20,
@@ -52,39 +49,32 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
           ease: 'sine.inOut'
         });
 
-        // Left info reveal
         tl.to('.contact-info', {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.55,
           ease: GSAP_EASING.elegant
-        }, 0);
-
-        // Stagger links
-        tl.to('.contact-link', {
-          y: 0,
-          opacity: 1,
-          duration: 0.4,
-          stagger: 0.1,
-          ease: GSAP_EASING.snappy
-        }, 0.2);
-
-        // Stagger social buttons
-        tl.to('.contact-social', {
-          scale: 1,
-          opacity: 1,
-          duration: 0.4,
-          stagger: 0.1,
-          ease: GSAP_EASING.bouncy
-        }, 0.4);
-
-        // Right CTA card reveal
-        tl.to('.contact-cta', {
+        }, 0)
+        .to('.contact-cta', {
           x: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.65,
           ease: GSAP_EASING.elegant
-        }, 0.1);
+        }, 0.1)
+        .to('.contact-link', {
+          y: 0,
+          opacity: 1,
+          duration: 0.45,
+          stagger: 0.1,
+          ease: GSAP_EASING.snappy
+        }, 0.2)
+        .to('.contact-social', {
+          scale: 1,
+          opacity: 1,
+          duration: 0.45,
+          stagger: 0.1,
+          ease: GSAP_EASING.bouncy
+        }, 0.35);
 
       }, this.el.nativeElement);
     });
