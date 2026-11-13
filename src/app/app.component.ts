@@ -48,7 +48,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         }
 
         // Update gradient center
-        this.spotlight.nativeElement.style.background = `radial-gradient(600px at ${x}px ${y}px, rgba(108, 99, 255, 0.12), transparent 80%)`;
+        this.spotlight.nativeElement.style.background = `radial-gradient(600px at ${x}px ${y}px, rgba(14, 165, 233, 0.08), transparent 80%)`;
       };
 
       window.addEventListener('mousemove', this.mouseMoveHandler, { passive: true });

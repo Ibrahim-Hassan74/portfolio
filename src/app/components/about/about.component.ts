@@ -14,7 +14,7 @@ import { GSAP_EASING } from '../../utils/gsap.utils';
 export class AboutComponent implements AfterViewInit, OnDestroy {
   readonly profileImage = CONTACT.profileImage;
   readonly quickFacts: { icon: string; text: string; url?: string }[] = [
-    { icon: 'graduation-cap', text: 'B.Sc IT, Minia University, 2026' },
+    { icon: 'graduation-cap', text: 'B.Sc IT, Minia University (GPA: 3.4/4.0)' },
     { icon: 'award', text: 'ECPC Finalist 2024', url: 'https://drive.google.com/file/d/1Vc6Tc7DMcvd354QlbvN2AOpACGzvyKt1/view' },
     { icon: 'building', text: 'AAIB Banking Internship 2025', url: 'https://drive.google.com/file/d/182TijwXWvkLnO1b3LTIz8sGnuYNwCYy2/view' },
     { icon: 'globe', text: 'Arabic (Native) · English' },
@@ -23,18 +23,18 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
   readonly values = [
     {
       icon: 'server',
-      title: 'Backend Expert',
-      text: 'ASP.NET Core, Clean Architecture, SignalR, Redis, Docker',
+      title: 'Backend & Architecture',
+      text: 'ASP.NET Core, Clean Architecture, Hybrid CQRS (EF Core & Dapper), SignalR, Redis',
     },
     {
       icon: 'zap',
-      title: 'Full Stack',
-      text: 'Angular to SQL Server — end to end ownership',
+      title: 'Full-Stack & DevOps',
+      text: 'Angular (Signals, SSR) to PostgreSQL & SQL Server, Docker Compose & GitHub Actions CI/CD',
     },
     {
       icon: 'test-tube',
-      title: 'Test-Driven',
-      text: '300+ xUnit cases, Moq, FluentAssertions, integration testing',
+      title: 'Test-Driven Quality',
+      text: '570+ automated xUnit, Moq, FluentAssertions & full-stack PostgreSQL integration tests',
     },
   ];
 
@@ -47,24 +47,12 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
 
     this.zone.runOutsideAngular(() => {
       this.ctx = gsap.context(() => {
-        
-        // Image parallax effect on scroll
-        gsap.to('.about-img', {
-          yPercent: 15,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: this.el.nativeElement,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.el.nativeElement,
-            start: 'top 75%',
-            toggleActions: 'play reverse play reverse'
+            start: 'top 80%',
+            toggleActions: 'play none none none'
           }
         });
 

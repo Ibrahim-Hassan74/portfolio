@@ -1,26 +1,14 @@
 <section
   id="hero"
-  class="relative flex min-h-screen items-center overflow-hidden pt-16"
+  class="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16"
 >
   <div
-    class="hero-bg pointer-events-none absolute -left-40 -top-20 h-[600px] w-[600px] rounded-full blur-3xl opacity-0"
-    style="background: radial-gradient(circle, rgba(108,99,255,0.15), transparent 70%)"
-  ></div>
-  <div
-    class="hero-bg pointer-events-none absolute -bottom-32 -right-32 h-[400px] w-[400px] rounded-full blur-3xl opacity-0"
-    style="background: radial-gradient(circle, rgba(108,99,255,0.10), transparent 70%)"
-  ></div>
-
-  <div
-    class="hero-bg dot-grid pointer-events-none absolute inset-0 opacity-0"
-  ></div>
-
-  <div
-    class="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-5 lg:px-8"
+    class="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-8"
   >
-    <div class="lg:col-span-3">
+    <!-- Left Column: Hero Copy & Bento Stats -->
+    <div class="lg:col-span-7">
       <div
-        class="hero-item inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface px-3 py-1.5 text-xs font-medium text-text-secondary"
+        class="hero-item inline-flex items-center gap-2.5 rounded-full border border-accent bg-surface px-4 py-1.5 text-xs font-semibold text-accent shadow-sm backdrop-blur-md"
       >
         <span class="relative flex h-2 w-2">
           <span
@@ -28,51 +16,48 @@
           ></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
         </span>
-        Open to Work — Available for opportunities
+        Available for Full-Stack &amp; Backend Engineering Roles
       </div>
 
       <h1
         class="hero-item mt-6 text-balance text-5xl font-black tracking-tight text-text-primary sm:text-6xl lg:text-7xl"
       >
         Ibrahim
-        <span
-          class="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent"
-          >Hassan</span
-        >
+        <span class="text-gradient-aurora">Hassan</span>
       </h1>
 
-      <p class="hero-item mt-4 text-xl font-semibold text-text-secondary sm:text-2xl">
-        Fullstack Developer
-      </p>
-      <p class="hero-item mt-1 font-mono text-sm text-text-muted">
-        .NET · Angular
+      <div class="hero-item mt-4 flex flex-wrap items-center gap-3">
+        <span class="text-xl font-bold text-text-primary sm:text-2xl">
+          Full-Stack Software Engineer
+        </span>
+        <span class="rounded-lg border border-border-subtle bg-elevated px-3 py-1 font-mono text-xs font-semibold text-accent sm:text-sm">
+          .NET 10 &middot; Angular &middot; Clean Architecture
+        </span>
+      </div>
+
+      <p class="hero-item mt-4 font-mono text-base font-semibold text-accent-2 sm:text-lg">
+        &gt; {{ typedText() }}<span class="typing-cursor bg-accent">&nbsp;</span>
       </p>
 
-      <p class="hero-item mt-4 font-mono text-base text-accent sm:text-lg">
-        {{ typedText() }}<span class="typing-cursor bg-accent">&nbsp;</span>
+      <p class="hero-item mt-5 max-w-2xl text-pretty text-sm leading-relaxed text-text-secondary sm:text-base">
+        Results-driven Software Engineer and <strong class="text-text-primary">ECPC Finalist</strong> experienced in architecting
+        high-concurrency distributed platforms, hybrid <strong class="text-text-primary">CQRS</strong> pipelines (<strong class="text-text-primary">EF Core &amp; Dapper</strong>),
+        and real-time <strong class="text-text-primary">SignalR</strong> ecosystems, backed by <strong class="text-text-primary">570+ automated tests</strong> and <strong class="text-text-primary">GitHub Actions CI/CD</strong>.
       </p>
 
-      <p class="hero-item mt-6 max-w-2xl text-pretty text-sm leading-relaxed text-text-secondary sm:text-base">
-        Fullstack Developer and ECPC Finalist with hands-on experience building
-        real-time platforms, encrypted authentication systems, and multi-service
-        architectures using ASP.NET Core, Clean Architecture, and Angular.
-      </p>
-
-      <div class="hero-item mt-8 flex flex-wrap items-center gap-4">
+      <div class="hero-item mt-8 flex flex-wrap items-center gap-3.5">
         <button
           type="button"
           (click)="scrollTo('projects')"
-          magnetic
-          class="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+          class="btn-aurora inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-white"
         >
-          View My Work
+          Explore Flagship Systems
           <lucide-icon name="arrow-right" [size]="18" />
         </button>
         <a
           [href]="contact.cv"
           download
-          magnetic
-          class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-5 py-3 text-sm font-semibold text-text-primary transition-colors hover:bg-elevated hover:border-accent/50 hover:text-accent"
+          class="glass-card inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold text-text-primary hover:text-accent"
         >
           <lucide-icon name="download" [size]="18" />
           Download CV
@@ -81,25 +66,25 @@
           [href]="contact.github"
           target="_blank"
           rel="noopener noreferrer"
-          magnetic
-          class="inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-accent"
+          class="glass-card inline-flex items-center gap-2 rounded-xl px-4 py-3.5 text-sm font-semibold text-text-secondary hover:text-accent"
         >
           <lucide-icon name="github" [size]="18" />
           {{ contact.githubHandle }}
         </a>
       </div>
 
-      <div class="hero-item mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4" role="list" aria-label="Key statistics">
+      <!-- Bento Stat Cards -->
+      <div class="hero-item mt-10 grid grid-cols-2 gap-3.5 sm:grid-cols-4" role="list" aria-label="Key statistics">
         @for (stat of stats; track stat.label) {
-          <div role="listitem">
-            <div class="text-3xl font-black text-accent">
+          <div role="listitem" class="glass-card rounded-2xl p-4">
+            <div class="text-2xl font-black text-gradient-aurora sm:text-3xl">
               @if (stat.isNumber) {
                 <span class="stat-number" [attr.data-target]="stat.num">0</span>{{ stat.suffix }}
               } @else {
                 {{ stat.text }}
               }
             </div>
-            <div class="mt-1 text-xs font-medium uppercase tracking-wide text-text-muted">
+            <div class="mt-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-text-muted">
               {{ stat.label }}
             </div>
           </div>
@@ -107,28 +92,46 @@
       </div>
     </div>
 
-    <div class="hero-visual lg:col-span-2 w-full min-w-0" aria-label="Code demonstration">
+    <!-- Right Column: Interactive Glass IDE Window -->
+    <div class="hero-visual lg:col-span-5 w-full min-w-0" aria-label="Code demonstration">
       <div
-        class="w-full overflow-hidden rounded-xl border border-border-subtle bg-surface shadow-2xl"
-        role="img"
-        aria-label="Live code snippet showing SignalR hub implementation"
-        style="box-shadow: 0 0 40px rgba(108,99,255,0.10)"
+        class="w-full overflow-hidden rounded-2xl border border-[#1e293b] bg-[#070b14] text-[#f1f5f9] shadow-2xl"
+        style="box-shadow: 0 25px 60px -15px rgba(16, 185, 129, 0.2)"
       >
-        <div class="flex items-center gap-2 border-b border-border-subtle bg-elevated px-4 py-3">
-          <span class="h-3 w-3 rounded-full bg-[#ff5f57]"></span>
-          <span class="h-3 w-3 rounded-full bg-[#febc2e]"></span>
-          <span class="h-3 w-3 rounded-full bg-[#28c840]"></span>
-          <span class="ml-3 font-mono text-xs text-text-muted">{{ snippetLabel() }}</span>
+        <div class="flex items-center justify-between border-b border-[#1e293b] bg-[#0f172a] px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 rounded-full bg-[#ff5f57]"></span>
+            <span class="h-3 w-3 rounded-full bg-[#febc2e]"></span>
+            <span class="h-3 w-3 rounded-full bg-[#28c840]"></span>
+          </div>
+          <div class="flex items-center gap-1 rounded-lg bg-[#070b14] p-1">
+            <span
+              class="rounded-md px-2.5 py-1 font-mono text-[11px] font-semibold"
+              [class.bg-[#10b981]]="activeSnippet() === 'dotnet'"
+              [class.text-white]="activeSnippet() === 'dotnet'"
+              [class.text-[#94a3b8]]="activeSnippet() !== 'dotnet'"
+            >
+              QueueHub.cs
+            </span>
+            <span
+              class="rounded-md px-2.5 py-1 font-mono text-[11px] font-semibold"
+              [class.bg-[#06b6d4]]="activeSnippet() === 'angular'"
+              [class.text-white]="activeSnippet() === 'angular'"
+              [class.text-[#94a3b8]]="activeSnippet() !== 'angular'"
+            >
+              queue.service.ts
+            </span>
+          </div>
         </div>
         <pre
-          class="w-full overflow-x-auto p-4 font-mono text-xs leading-relaxed sm:text-[13px] h-[320px]"
+          class="w-full overflow-x-auto p-5 font-mono text-xs leading-relaxed sm:text-[13px] h-[310px]"
         ><code>@for (line of typedSnippetLines(); track $index) {<span [innerHTML]="line.html"></span>
 }</code></pre>
       </div>
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <div class="mt-5 flex flex-wrap justify-center gap-2.5">
         @for (badge of techBadges; track badge; let i = $index) {
           <span
-            class="hero-badge animate-float rounded-full border border-border-subtle bg-elevated px-3 py-1.5 font-mono text-xs text-text-secondary"
+            class="hero-badge animate-float rounded-full border border-border-subtle bg-surface px-3.5 py-1.5 font-mono text-xs font-semibold text-text-primary shadow-sm backdrop-blur-md"
             [style.animation-delay.ms]="i * 400"
           >
             {{ badge }}

@@ -31,7 +31,7 @@ export class FooterComponent implements AfterViewInit, OnDestroy {
           scrollTrigger: {
             trigger: this.el.nativeElement,
             start: 'top 95%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         });
 

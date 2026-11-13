@@ -61,7 +61,12 @@ import {
   BookOpen,
   ScrollText,
   CopyCheck,
-  Server
+  Server,
+  Sun,
+  Moon,
+  Sparkles,
+  Bot,
+  Workflow
 } from 'lucide-angular';
 import { routes } from './app.routes';
 
@@ -129,7 +134,12 @@ export const appConfig: ApplicationConfig = {
         BookOpen,
         ScrollText,
         CopyCheck,
-        Server
+        Server,
+        Sun,
+        Moon,
+        Sparkles,
+        Bot,
+        Workflow
       }),
     ),
   ],

@@ -19,9 +19,9 @@
   <meta http-equiv="content-language" content="en" />
 
   <!-- Theme Colors -->
-  <meta name="theme-color" content="#0a0a0f" />
-  <meta name="msapplication-TileColor" content="#6c63ff" />
-  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#030712" />
+  <meta name="msapplication-TileColor" content="#10b981" />
+  <meta name="color-scheme" content="dark light" />
 
   <!-- Author & Generator -->
   <meta name="author" content="Ibrahim Hassan" />
@@ -150,12 +150,12 @@
       "ECPC Finalist 2024 — Egyptian Collegiate Programming Contest"
     ],
     "knowsAbout": [
-      "ASP.NET Core", "C#", ".NET", "Angular", "TypeScript", "Clean Architecture",
-      "SignalR", "Redis", "Docker", "Entity Framework Core", "SQL Server",
-      "PostgreSQL", "REST API Design", "CQRS", "MediatR", "OAuth 2.0",
+      "ASP.NET Core", "C#", ".NET 10", "Angular", "TypeScript", "Clean Architecture",
+      "SignalR", "Redis", "Docker", "Entity Framework Core", "Dapper", "SQL Server",
+      "PostgreSQL", "PL/pgSQL", "REST API Design", "CQRS", "MediatR", "OAuth 2.0",
       "JWT Authentication", "xUnit Testing", "Node.js", "HTML5", "SCSS",
       "TailwindCSS", "RxJS", "Angular Signals", "Hangfire", "Git",
-      "GitHub Actions", "Azure", "Docker Compose", "SOLID Principles",
+      "GitHub Actions", "Docker Compose", "SOLID Principles",
       "Microservices", "Real-time Systems", "WebSockets"
     ],
     "knowsLanguage": [
@@ -237,11 +237,25 @@
     "@id": "https://ibrahimhassan.dev/#projects",
     "name": "Featured Projects by Ibrahim Hassan",
     "description": "Production-grade software projects demonstrating full stack development expertise.",
-    "numberOfItems": 4,
+    "numberOfItems": 5,
     "itemListElement": [
       {
         "@type": "ListItem",
         "position": 1,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "TicketFlow — Enterprise Support & SLA Ticketing Platform",
+          "description": "Full-stack enterprise support ticket platform built with .NET 10 Clean Architecture, CQRS (MediatR), hybrid EF Core 10 + Dapper & PL/pgSQL persistence, SignalR real-time hubs, SLA background monitoring, Angular 19, and 320+ automated tests.",
+          "programmingLanguage": ["C#", "TypeScript", "SQL"],
+          "runtimePlatform": "ASP.NET Core 10",
+          "codeRepository": "https://github.com/Ibrahim-Hassan74/TicketFlow",
+          "author": { "@id": "https://ibrahimhassan.dev/#person" },
+          "keywords": ["ASP.NET Core 10", "Clean Architecture", "CQRS", "MediatR", "Dapper", "PostgreSQL", "SignalR", "Angular 19", "xUnit"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
         "item": {
           "@type": "SoftwareSourceCode",
           "name": "Wasla — Smart Microbus Platform",
@@ -256,7 +270,7 @@
       },
       {
         "@type": "ListItem",
-        "position": 2,
+        "position": 3,
         "item": {
           "@type": "SoftwareSourceCode",
           "name": "E-StoreX — Enterprise E-Commerce Platform",
@@ -271,7 +285,7 @@
       },
       {
         "@type": "ListItem",
-        "position": 3,
+        "position": 4,
         "item": {
           "@type": "SoftwareSourceCode",
           "name": "WhatsApp Messaging Infrastructure",
@@ -280,12 +294,12 @@
           "runtimePlatform": "Node.js",
           "codeRepository": "https://github.com/Ibrahim-Hassan74/whatsapp-service",
           "author": { "@id": "https://ibrahimhassan.dev/#person" },
-          "keywords": ["Node.js", "Puppeteer", "ASP.NET Core", "SignalR", "Docker", "NGINX"]
+          "keywords": ["Node.js", "Puppeteer", "ASP.NET Core", "SignalR", "Docker"]
         }
       },
       {
         "@type": "ListItem",
-        "position": 4,
+        "position": 5,
         "item": {
           "@type": "SoftwareSourceCode",
           "name": "Laundry Management System",
@@ -320,7 +334,7 @@
         "name": "What technologies does Ibrahim Hassan use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ibrahim Hassan specializes in ASP.NET Core, C#, Angular, TypeScript, Entity Framework Core, SQL Server, Redis, Docker, SignalR, and Clean Architecture. He also works with Node.js, PostgreSQL, OAuth 2.0, JWT, xUnit, Hangfire, and Azure."
+          "text": "Ibrahim Hassan specializes in ASP.NET Core 10, C#, Angular 19, TypeScript, Entity Framework Core, Dapper, SQL Server, PostgreSQL, PL/pgSQL, Redis, Docker, SignalR, and Clean Architecture with CQRS (MediatR). He also works with Node.js, OAuth 2.0, JWT, xUnit, Hangfire, and GitHub Actions CI/CD."
         }
       },
       {
@@ -328,7 +342,7 @@
         "name": "What projects has Ibrahim Hassan built?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Key projects include: Wasla (a live real-time smart microbus platform with 4 SignalR hubs and AES-GCM encrypted QR tokens), E-StoreX (a full-stack e-commerce platform with 140+ endpoints and Stripe integration), a WhatsApp Messaging Infrastructure (self-healing headless browser engine), and a Laundry Management System (bilingual MVC SaaS with automated reporting)."
+          "text": "Key projects include: TicketFlow (an enterprise support and SLA ticketing platform built with .NET 10, CQRS, Dapper, PL/pgSQL, and 320+ automated tests), Wasla (a live real-time smart microbus platform with 4 SignalR hubs and AES-GCM encrypted QR tokens), E-StoreX (a full-stack e-commerce platform with 140+ endpoints, Stripe integration, and 250+ tests), a WhatsApp Messaging Infrastructure (self-healing headless browser engine), and a Laundry Management System (bilingual MVC SaaS with automated reporting)."
         }
       },
       {
@@ -369,16 +383,20 @@
         Wasla, is a live, deployed transportation management system built for Egypt's informal microbus network.</p>
 
       <h2>Technical Skills</h2>
-      <p><strong>Backend:</strong> ASP.NET Core, Web API, Minimal APIs, MVC, SignalR, Hangfire, EF Core, LINQ, MediatR
-        (CQRS), Node.js</p>
-      <p><strong>Frontend:</strong> Angular, TypeScript, RxJS, Angular Signals, TailwindCSS, SSR, SCSS, HTML5</p>
-      <p><strong>Databases:</strong> SQL Server, Redis, PostgreSQL</p>
+      <p><strong>Backend:</strong> ASP.NET Core 10, Web API, Minimal APIs, MVC, SignalR, Hangfire, EF Core, Dapper, LINQ, MediatR
+        (CQRS), FluentValidation, Node.js</p>
+      <p><strong>Frontend:</strong> Angular 19, TypeScript, RxJS, Angular Signals, TailwindCSS, SSR, SCSS, HTML5</p>
+      <p><strong>Databases:</strong> SQL Server, PostgreSQL, PL/pgSQL Stored Functions, Redis</p>
       <p><strong>Auth &amp; Security:</strong> JWT, OAuth 2.0, ASP.NET Identity, AES-GCM Encryption, RBAC</p>
-      <p><strong>Testing:</strong> xUnit, Moq, FluentAssertions, Integration Testing</p>
-      <p><strong>DevOps &amp; Cloud:</strong> Docker, Docker Compose, Azure, GitHub Actions</p>
+      <p><strong>Testing:</strong> xUnit, Moq, FluentAssertions, Integration Testing (570+ test cases)</p>
+      <p><strong>DevOps &amp; Tooling:</strong> Docker, Docker Compose, GitHub Actions (CI/CD), Git</p>
       <p><strong>Languages:</strong> C#, TypeScript, JavaScript, SQL, C++, Java</p>
 
       <h2>Featured Projects</h2>
+      <h3>TicketFlow — Enterprise Support &amp; SLA Ticketing Platform</h3>
+      <p>Full-stack enterprise support ticket platform built with .NET 10 Clean Architecture, CQRS (MediatR), hybrid EF Core 10 + Dapper &amp; PL/pgSQL persistence, SignalR real-time hubs, SLA background monitoring, Angular 19, and 320+ automated tests.</p>
+      <p><a href="https://github.com/Ibrahim-Hassan74/TicketFlow">GitHub</a></p>
+
       <h3>Wasla — Smart Microbus Platform</h3>
       <p>Real-time transportation management system for Egypt's informal microbus network. 5-application distributed
         ecosystem with encrypted QR workflows, live GPS tracking, 4 concurrent SignalR hubs.</p>

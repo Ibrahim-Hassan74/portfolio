@@ -13,25 +13,24 @@ import { LucideAngularModule } from 'lucide-angular';
 import { CONTACT } from '../../data/portfolio.data';
 import { gsap } from 'gsap';
 import { GSAP_EASING } from '../../utils/gsap.utils';
-import { MagneticDirective } from '../../directives/magnetic.directive';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [LucideAngularModule, MagneticDirective],
+  imports: [LucideAngularModule],
   templateUrl: './hero.component.html',
 })
 export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly contact = CONTACT;
 
   readonly stats = [
-    { num: 8, suffix: '+', text: '', label: 'Projects', isNumber: true },
-    { num: 5, suffix: '', text: '', label: 'Live Demos', isNumber: true },
-    { num: 300, suffix: '+', text: '', label: 'Test Cases', isNumber: true },
+    { num: 12, suffix: '+', text: '', label: 'Projects', isNumber: true },
+    { num: 6, suffix: '', text: '', label: 'Live Demos', isNumber: true },
+    { num: 570, suffix: '+', text: '', label: 'Test Cases', isNumber: true },
     { num: 0, suffix: '', text: 'ECPC', label: 'Finalist', isNumber: false },
   ];
 
-  readonly techBadges = ['.NET', 'Angular', 'SignalR', 'Redis', 'Docker'];
+  readonly techBadges = ['.NET 10', 'Angular', 'PostgreSQL', 'SignalR', 'Docker', 'CI/CD'];
 
   // .NET C# snippet
   private readonly dotnetLines: { html: string }[] = [
@@ -68,7 +67,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   activeSnippet = signal<'dotnet' | 'angular'>('dotnet');
-  typedSnippetLines = signal<{html: string}[]>([]);
+  typedSnippetLines = signal<{ html: string }[]>([]);
 
   readonly snippetLabel = computed(() =>
     this.activeSnippet() === 'dotnet' ? 'QueueHub.cs' : 'queue.service.ts',
@@ -90,7 +89,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   private deleting = false;
   private timer?: ReturnType<typeof setTimeout>;
   private snippetTimer?: ReturnType<typeof setTimeout>;
-  
+
   private el = inject(ElementRef);
   private zone = inject(NgZone);
   private ctx!: gsap.Context;
@@ -166,7 +165,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
             ease: "power2.out"
           });
         });
-        
+
       }, this.el.nativeElement);
     });
   }
@@ -236,24 +235,24 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   private typeSnippet(): void {
     const lines = this.visibleLines();
     const tokenizedLines = lines.map(l => this.tokenizeHtml(l.html));
-    
+
     let currentLineIdx = 0;
     let currentTokenIdx = 0;
-    const currentRenderedLines: {html: string}[] = [];
-    
+    const currentRenderedLines: { html: string }[] = [];
+
     const typeInterval = setInterval(() => {
       if (currentLineIdx >= tokenizedLines.length) {
         clearInterval(typeInterval);
-        
+
         this.snippetTimer = setTimeout(() => {
           this.activeSnippet.update(s => (s === 'dotnet' ? 'angular' : 'dotnet'));
-          this.typeSnippet(); 
+          this.typeSnippet();
         }, 4000);
         return;
       }
 
       const tokens = tokenizedLines[currentLineIdx];
-      
+
       if (currentTokenIdx === 0) {
         currentRenderedLines.push({ html: '' });
       }
@@ -261,7 +260,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
       if (tokens.length > 0) {
         currentRenderedLines[currentLineIdx].html += tokens[currentTokenIdx];
       }
-      
+
       this.typedSnippetLines.set([...currentRenderedLines]);
 
       currentTokenIdx++;
@@ -270,7 +269,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
         currentLineIdx++;
         currentTokenIdx = 0;
       }
-    }, 15); 
+    }, 15);
   }
 
   scrollTo(id: string): void {

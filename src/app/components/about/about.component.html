@@ -14,11 +14,11 @@
             />
           </div>
 
-          <div class="mt-5 flex items-center gap-2 rounded-full border border-border-subtle bg-surface px-3 py-1.5 text-sm text-text-secondary">
+          <div class="mt-5 flex items-center gap-2 rounded-full border border-border-subtle bg-surface px-4 py-1.5 text-sm font-semibold text-text-primary shadow-sm backdrop-blur-md">
             <lucide-icon name="map-pin" [size]="16" class="text-accent" />
             Cairo, Egypt
           </div>
-          <span class="mt-2 text-xs text-text-muted">Open to relocation</span>
+          <span class="mt-2 text-xs font-medium text-text-muted">Open to relocation &amp; remote work</span>
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -27,18 +27,18 @@
               <a
                 [href]="fact.url"
                 target="_blank"
-                class="about-fact group flex items-start gap-3 rounded-xl border border-border-subtle bg-surface p-4 transition-colors hover:border-accent/50 cursor-pointer opacity-0 translate-y-4"
+                class="about-fact glass-card group flex items-start gap-3 rounded-2xl p-4 cursor-pointer opacity-0 translate-y-4"
               >
                 <lucide-icon [name]="fact.icon" [size]="18" class="mt-0.5 shrink-0 text-accent" />
-                <span class="text-sm text-text-secondary transition-colors group-hover:text-accent">{{ fact.text }}</span>
+                <span class="text-sm font-medium text-text-secondary transition-colors group-hover:text-accent">{{ fact.text }}</span>
                 <lucide-icon name="external-link" [size]="14" class="ml-auto mt-1 text-text-muted transition-colors group-hover:text-accent" />
               </a>
             } @else {
               <div
-                class="about-fact flex items-start gap-3 rounded-xl border border-border-subtle bg-surface p-4 transition-colors hover:border-accent/50 opacity-0 translate-y-4"
+                class="about-fact glass-card flex items-start gap-3 rounded-2xl p-4 opacity-0 translate-y-4"
               >
                 <lucide-icon [name]="fact.icon" [size]="18" class="mt-0.5 shrink-0 text-accent" />
-                <span class="text-sm text-text-secondary">{{ fact.text }}</span>
+                <span class="text-sm font-medium text-text-secondary">{{ fact.text }}</span>
               </div>
             }
           }
@@ -46,39 +46,37 @@
       </div>
 
       <div class="lg:col-span-3">
-        <p class="about-text opacity-0 translate-y-4 font-mono text-sm text-accent" aria-hidden="true">&lt; About Me /&gt;</p>
-        <h2 class="about-text opacity-0 translate-y-4 mt-3 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-          I build systems that
-          <span class="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent"
-            >scale</span
-          >
+        <p class="about-text opacity-0 translate-y-4 font-mono text-sm font-semibold text-accent" aria-hidden="true">&lt; About Me /&gt;</p>
+        <h2 class="about-text opacity-0 translate-y-4 mt-2 text-3xl font-black tracking-tight text-text-primary sm:text-4xl">
+          Engineering systems that
+          <span class="text-gradient-aurora">scale &amp; endure</span>
         </h2>
 
         <div class="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary sm:text-base">
           <p class="about-text opacity-0 translate-y-4">
-            I'm a Fullstack Developer specializing in ASP.NET Core and Angular. I design and
-            ship production systems — from real-time GPS tracking platforms to enterprise
-            e-commerce APIs with payment integration and automated testing.
+            I'm a Fullstack Software Engineer specializing in <strong class="text-text-primary">ASP.NET Core</strong> and <strong class="text-text-primary">Angular</strong>. I design and
+            ship production systems — from hybrid <strong class="text-text-primary">CQRS enterprise platforms (TicketFlow)</strong> and real-time GPS tracking ecosystems to
+            full-stack e-commerce applications with automated testing and CI/CD pipelines.
           </p>
           <p class="about-text opacity-0 translate-y-4">
-            My graduation project, Wasla, is a live, deployed transportation management system
-            built for Egypt's informal microbus network. It serves real users, has a live
-            Swagger API, an Angular admin dashboard, and a downloadable Flutter mobile app.
+            My graduation project, <strong class="text-text-primary">Wasla</strong>, is a live, deployed transportation management system
+            built for Egypt's microbus network, featuring 4 concurrent SignalR hubs, AES-GCM encrypted QR workflows, and Redis-backed OSRM routing.
           </p>
           <p class="about-text opacity-0 translate-y-4">
-            I approach every system with Clean Architecture, SOLID principles, and a focus on
-            long-term maintainability — not just making it work, but making it right.
+            I approach every system with Clean Architecture, SOLID principles, and rigorous automated testing — not just making it work, but making it resilient in production.
           </p>
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
           @for (value of values; track value.title) {
             <div
-              class="about-value rounded-xl border border-border-subtle bg-surface p-5 transition-colors hover:border-accent/50 opacity-0 translate-y-4"
+              class="about-value glass-card rounded-2xl p-5 opacity-0 translate-y-4"
             >
-              <lucide-icon [name]="value.icon" [size]="22" class="text-accent" />
-              <h3 class="mt-3 text-base font-semibold text-text-primary">{{ value.title }}</h3>
-              <p class="mt-2 text-xs leading-relaxed text-text-secondary">{{ value.text }}</p>
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-elevated text-accent">
+                <lucide-icon [name]="value.icon" [size]="20" />
+              </span>
+              <h3 class="mt-3.5 text-base font-bold text-text-primary">{{ value.title }}</h3>
+              <p class="mt-1.5 text-xs leading-relaxed text-text-secondary">{{ value.text }}</p>
             </div>
           }
         </div>

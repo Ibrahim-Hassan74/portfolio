@@ -8,11 +8,12 @@
       
       <!-- Left Info -->
       <div class="contact-info opacity-0 translate-y-8">
-        <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-          Let's Build <span class="text-accent">Something</span>
+        <p class="font-mono text-sm font-semibold text-accent">&lt; Get In Touch /&gt;</p>
+        <h2 class="mt-2 text-3xl font-black tracking-tight text-text-primary sm:text-4xl">
+          Let's Build <span class="text-gradient-aurora">Something Great</span>
         </h2>
         <p class="mt-4 max-w-md text-sm leading-relaxed text-text-secondary sm:text-base">
-          Open to full-time opportunities, freelance projects, and technical conversations.
+          Open to full-time engineering roles, freelance projects, and architectural collaborations.
         </p>
 
         <div class="mt-8 space-y-4">
@@ -79,26 +80,22 @@
 
       <!-- Right CTA -->
       <div class="contact-cta opacity-0 translate-x-8">
-        <div class="rounded-2xl border border-border-subtle bg-surface p-6 sm:p-8 relative overflow-hidden group">
+        <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group">
           
-          <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
           <div class="relative flex flex-col gap-4">
             <a
               [href]="contact.cv"
               download
-              magnetic
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+              class="btn-aurora inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold text-white"
             >
               <lucide-icon name="download" [size]="18" />
-              Download CV
+              Download Resume (PDF)
             </a>
             <a
               [href]="contact.github"
               target="_blank"
               rel="noopener noreferrer"
-              magnetic
-              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-colors hover:border-accent/50"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-border-subtle bg-elevated px-5 py-3.5 text-sm font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent"
             >
               <lucide-icon name="github" [size]="18" />
               View GitHub Profile
@@ -107,8 +104,7 @@
               [href]="contact.linkedin"
               target="_blank"
               rel="noopener noreferrer"
-              magnetic
-              class="inline-flex items-center justify-center gap-2 rounded-lg border border-border-subtle px-5 py-3.5 text-sm font-semibold text-text-primary transition-colors hover:border-accent/50"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-border-subtle bg-elevated px-5 py-3.5 text-sm font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent"
             >
               <lucide-icon name="linkedin" [size]="18" />
               Connect on LinkedIn

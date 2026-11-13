@@ -1,20 +1,79 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0a0f;
-  --color-surface: #13131a;
-  --color-elevated: #1c1c28;
-  --color-border-subtle: #2a2a3a;
-  --color-accent: #6c63ff;
-  --color-accent-hover: #8b83ff;
-  --color-accent-2: #a78bfa;
-  --color-text-primary: #f1f1f6;
-  --color-text-secondary: #a0a0b8;
-  --color-text-muted: #5a5a72;
-  --color-success: #22c55e;
+  --color-background: var(--bg-primary);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-border-subtle: var(--border-subtle);
+  --color-accent: var(--accent-primary);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-2: var(--accent-secondary);
+  --color-text-primary: var(--text-main);
+  --color-text-secondary: var(--text-sub);
+  --color-text-muted: var(--text-dim);
+  --color-success: var(--status-success);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ==========================================================================
+   AURORA EMERALD & CYBER CYAN THEME (DARK & LIGHT)
+   ========================================================================== */
+:root {
+  --bg-primary: #030712;
+  --bg-surface: rgba(15, 23, 42, 0.72);
+  --bg-elevated: rgba(30, 41, 59, 0.65);
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --accent-primary: #10b981;
+  --accent-hover: #059669;
+  --accent-secondary: #06b6d4;
+  --accent-tertiary: #8b5cf6;
+  --text-main: #f8fafc;
+  --text-sub: #cbd5e1;
+  --text-dim: #64748b;
+  --status-success: #10b981;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --card-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.7), var(--glass-highlight);
+  --card-hover-shadow: 0 25px 60px -15px rgba(16, 185, 129, 0.22), inset 0 1px 0 0 rgba(16, 185, 129, 0.35);
+  --aurora-1: rgba(16, 185, 129, 0.16);
+  --aurora-2: rgba(6, 182, 212, 0.14);
+  --aurora-3: rgba(139, 92, 246, 0.12);
+  --grid-line: rgba(148, 163, 184, 0.06);
+  --nav-solid: #0b1120;
+}
+
+html.light {
+  --bg-primary: #f1f5f9;
+  --bg-surface: rgba(255, 255, 255, 0.88);
+  --bg-elevated: rgba(241, 245, 249, 0.95);
+  --border-subtle: rgba(15, 23, 42, 0.1);
+  --accent-primary: #059669;
+  --accent-hover: #047857;
+  --accent-secondary: #0284c7;
+  --accent-tertiary: #6366f1;
+  --text-main: #0f172a;
+  --text-sub: #334155;
+  --text-dim: #64748b;
+  --status-success: #059669;
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.04), var(--glass-highlight);
+  --card-hover-shadow: 0 22px 45px -12px rgba(5, 150, 105, 0.18), inset 0 1px 0 0 rgba(5, 150, 105, 0.3);
+  --aurora-1: rgba(16, 185, 129, 0.12);
+  --aurora-2: rgba(2, 132, 199, 0.10);
+  --aurora-3: rgba(99, 102, 241, 0.08);
+  --grid-line: rgba(15, 23, 42, 0.045);
+  --nav-solid: #ffffff;
+}
+
+/* Instant synchronous theme switch with zero patchy lag */
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
 }
 
 html {
@@ -24,6 +83,14 @@ html {
 body {
   margin: 0;
   background-color: var(--color-background);
+  background-image:
+    radial-gradient(at 0% 0%, var(--aurora-1) 0px, transparent 50%),
+    radial-gradient(at 100% 15%, var(--aurora-2) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, var(--aurora-3) 0px, transparent 55%),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-attachment: fixed;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -31,8 +98,8 @@ body {
 }
 
 ::selection {
-  background-color: rgba(108, 99, 255, 0.3);
-  color: #ffffff;
+  background-color: rgba(16, 185, 129, 0.25);
+  color: var(--color-text-primary);
 }
 
 /* Custom scrollbar */
@@ -40,17 +107,15 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: var(--color-background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a3a;
+  background: var(--color-border-subtle);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6c63ff;
+  background: var(--color-accent);
 }
-
-
 
 /* Blinking typing cursor */
 @keyframes blink-cursor {
@@ -75,45 +140,111 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
 
-/* Grid dot pattern */
-.dot-grid {
-  background-image: radial-gradient(rgba(160, 160, 184, 0.15) 1px, transparent 1px);
-  background-size: 28px 28px;
+/* Mobile Navbar Menu Animations */
+@keyframes mobile-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mobile-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-mobile-backdrop {
+  animation: mobile-backdrop-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-mobile-panel {
+  transform-origin: top center;
+  animation: mobile-panel-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-mobile-item {
+  opacity: 0;
+  animation: mobile-item-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Architectural Glass Cards */
+.glass-card {
+  background: var(--color-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.project-card-surface {
+  background: var(--color-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+}
+.project-card-surface:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+/* Gradient text helper */
+.text-gradient-aurora {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 60%, var(--accent-tertiary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Primary gradient button */
+.btn-aurora {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 25px -6px rgba(16, 185, 129, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-aurora:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 30px -6px rgba(16, 185, 129, 0.6);
 }
 
 /* Force pointer cursor on all interactive elements */
 a, button {
   cursor: pointer !important;
-}
-
-/* Custom Swiper Pagination for Light DOM */
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-  border-radius: 50%;
-  background: var(--color-text-muted);
-  opacity: 0.5;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.swiper-pagination-bullet:hover {
-  opacity: 0.8;
-}
-
-.swiper-pagination-bullet-active {
-  background: var(--color-accent);
-  opacity: 1;
-  width: 24px;
-  border-radius: 4px;
 }
 
 /* Screen reader only — skip-to-content link */
@@ -127,16 +258,4 @@ a, button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-}
-
-/* Core Web Vitals: content-visibility for below-fold sections */
-/* Defers rendering of off-screen sections to improve LCP and INP */
-app-skills,
-app-projects,
-app-experience,
-app-education,
-app-contact,
-app-footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
 }

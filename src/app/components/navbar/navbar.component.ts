@@ -13,7 +13,6 @@ import { CONTACT } from '../../data/portfolio.data';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GSAP_EASING } from '../../utils/gsap.utils';
-import { MagneticDirective } from '../../directives/magnetic.directive';
 
 interface NavLink {
   label: string;
@@ -23,7 +22,7 @@ interface NavLink {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [LucideAngularModule, MagneticDirective],
+  imports: [LucideAngularModule],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy {
@@ -40,6 +39,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
   mobileOpen = signal(false);
   activeSection = signal('hero');
+  isLightMode = signal(false);
 
   @ViewChild('header', { static: true }) header!: ElementRef<HTMLElement>;
 
@@ -48,6 +48,40 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   private zone = inject(NgZone);
 
   mobileMenuTl?: gsap.core.Timeline;
+
+  constructor() {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersLight = savedTheme === 'light';
+      this.isLightMode.set(prefersLight);
+      document.documentElement.classList.toggle('light', prefersLight);
+    }
+  }
+
+  toggleTheme(): void {
+    const nextLight = !this.isLightMode();
+    if (typeof window !== 'undefined') {
+      const root = document.documentElement;
+      const applyTheme = () => {
+        root.classList.add('theme-switching');
+        this.isLightMode.set(nextLight);
+        root.classList.toggle('light', nextLight);
+        localStorage.setItem('theme', nextLight ? 'light' : 'dark');
+        // Force synchronous style recalculation so all elements switch in the exact same frame
+        void root.offsetHeight;
+        requestAnimationFrame(() => {
+          root.classList.remove('theme-switching');
+        });
+      };
+
+      const docAny = document as any;
+      if (typeof docAny.startViewTransition === 'function') {
+        docAny.startViewTransition(() => applyTheme());
+      } else {
+        applyTheme();
+      }
+    }
+  }
 
   ngAfterViewInit(): void {
     if (typeof window === 'undefined') return;
@@ -58,26 +92,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         gsap.from(this.header.nativeElement, {
           yPercent: -100,
           opacity: 0,
-          duration: 1,
+          duration: 0.8,
           ease: GSAP_EASING.snappy,
         });
-
-        // Mobile Menu Timeline
-        this.mobileMenuTl = gsap.timeline({ paused: true, reversed: true })
-          .fromTo('.mobile-menu', 
-            { display: 'none', opacity: 0 },
-            { display: 'flex', opacity: 1, duration: 0.3, ease: 'power2.inOut' }
-          )
-          .fromTo('.mobile-link', 
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: GSAP_EASING.snappy },
-            '-=0.1'
-          )
-          .fromTo('.mobile-cta a, .mobile-cta button', 
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.3, stagger: 0.1, ease: GSAP_EASING.elegant },
-            '-=0.2'
-          );
       });
     });
 
@@ -104,12 +121,14 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.observer?.disconnect();
     if (this.ctx) this.ctx.revert();
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+    }
   }
 
   scrollTo(id: string): void {
     if (this.mobileOpen()) {
-      this.mobileOpen.set(false);
-      this.mobileMenuTl?.reverse();
+      this.closeMobile();
     }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -118,11 +137,15 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   toggleMobile(): void {
     const isOpening = !this.mobileOpen();
     this.mobileOpen.set(isOpening);
-    
-    if (isOpening) {
-      this.mobileMenuTl?.play();
-    } else {
-      this.mobileMenuTl?.reverse();
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = isOpening ? 'hidden' : '';
+    }
+  }
+
+  closeMobile(): void {
+    this.mobileOpen.set(false);
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
     }
   }
 }

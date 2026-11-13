@@ -31,7 +31,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
             trigger: '.contact-info',
             endTrigger: this.el.nativeElement,
             start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         });
 

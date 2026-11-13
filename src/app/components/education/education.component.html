@@ -1,14 +1,14 @@
 <section id="education" class="relative border-t border-border-subtle py-24">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
     <div class="edu-header max-w-2xl opacity-0">
-      <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-        Education
+      <p class="font-mono text-sm font-semibold text-accent">&lt; Academic Background /&gt;</p>
+      <h2 class="mt-2 text-3xl font-black tracking-tight text-text-primary sm:text-4xl">
+        Education &amp; <span class="text-gradient-aurora">Certifications</span>
       </h2>
     </div>
 
     <div
-      class="edu-card mt-10 flex items-start gap-4 rounded-2xl border border-l-2 border-border-subtle border-l-accent bg-surface p-6 opacity-0 translate-y-4"
-    >
+      class="edu-card glass-card mt-10 flex items-start gap-4 rounded-2xl border-l-4 border-l-accent p-6 opacity-0 translate-y-4">
       <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-elevated">
         <lucide-icon name="graduation-cap" [size]="22" class="text-accent" />
       </div>
@@ -17,7 +17,7 @@
           Bachelor of Information Technology
         </h3>
         <p class="mt-1 text-sm text-text-secondary">
-          Faculty of Science, Minia University
+          Faculty of Science, Minia University — <span class="font-semibold text-accent">GPA: 3.4 / 4.0</span>
         </p>
         <p class="mt-1 font-mono text-xs text-text-muted">
           <time datetime="2022-09/2026-06">Minia, Egypt · Sep 2022 – Jun 2026</time>
@@ -27,12 +27,11 @@
 
     <div class="mt-6 flex flex-wrap gap-3">
       @for (cert of certifications; track cert) {
-        <span
-          class="edu-cert inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary opacity-0 translate-y-2"
-        >
-          <lucide-icon name="award" [size]="15" class="text-accent" />
-          {{ cert }}
-        </span>
+      <span
+        class="edu-cert inline-flex items-center gap-2 rounded-full border border-border-subtle bg-elevated px-4 py-2 text-sm text-text-secondary opacity-0 translate-y-2">
+        <lucide-icon name="award" [size]="15" class="text-accent" />
+        {{ cert }}
+      </span>
       }
     </div>
   </div>

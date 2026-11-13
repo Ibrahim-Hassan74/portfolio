@@ -27,8 +27,8 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.el.nativeElement,
-            start: 'top 80%',
-            toggleActions: 'play reverse play reverse'
+            start: 'top 85%',
+            toggleActions: 'play none none none'
           }
         });
 
