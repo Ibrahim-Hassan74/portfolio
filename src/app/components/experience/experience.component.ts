@@ -12,10 +12,10 @@ import { GSAP_EASING } from '../../utils/gsap.utils';
 })
 export class ExperienceComponent implements AfterViewInit, OnDestroy {
   readonly bullets = [
-    'Designed and delivered a complete backend using ASP.NET Core and EF Core for invoice and expense management across multiple user roles',
-    'Implemented RBAC with ASP.NET Identity: Admin, Owner, Employee roles with full data isolation',
-    'Built automated PDF and Excel financial reporting modules',
-    'Delivered fully localized Arabic/English admin dashboards with MVC',
+    'Designed and developed a complete 3-layer full-stack ASP.NET Core MVC application (Web, Core, Infrastructure) with responsive bilingual (Arabic RTL / English) Razor & TailwindCSS views, EF Core, SQL Server, and AutoMapper',
+    'Implemented role-based access control (RBAC) using ASP.NET Identity across dedicated MVC Areas for 3 roles (Admin, Owner, Employee) with custom Hangfire security filters',
+    'Engineered 10+ full-stack business modules covering dynamic hotel/apartment pricing, invoice generation and repricing, debtor tracking, and categorized expense analytics',
+    'Automated daily/monthly billing via 4 Hangfire background jobs, generating Rotativa PDF invoices, ClosedXML Excel financial reports, and WhatsApp/MailKit customer notifications',
   ];
 
   readonly highlights: { icon: string; title: string; subtitle: string; meta: string; url?: string }[] = [
@@ -50,7 +50,7 @@ export class ExperienceComponent implements AfterViewInit, OnDestroy {
             trigger: '.exp-header',
             endTrigger: this.el.nativeElement,
             start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         });
 

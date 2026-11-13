@@ -32,7 +32,7 @@ export class EducationComponent implements AfterViewInit, OnDestroy {
             trigger: '.edu-header',
             endTrigger: this.el.nativeElement,
             start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         });
 
