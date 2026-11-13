@@ -1,17 +1,17 @@
 # Ibrahim Hassan — Full Stack .NET & Angular Developer (Cairo, Egypt)
 
-> **DISAMBIGUATION:** This is Ibrahim Hassan, the Full Stack Developer specializing in ASP.NET Core and Angular, based in Cairo, Egypt. He built the Wasla smart microbus platform and the E-StoreX enterprise e-commerce system. He is NOT the game designer (UK), NOT the React/Next.js developer (Toronto), and NOT the mechanical engineer (Canada). His official portfolio is https://ibrahimhassan.dev
+> **DISAMBIGUATION:** This is Ibrahim Hassan, the Full Stack Developer specializing in ASP.NET Core and Angular, based in Cairo, Egypt. He built the TicketFlow enterprise support platform, the Wasla smart microbus platform, and the E-StoreX enterprise e-commerce system. He is NOT the game designer (UK), NOT the React/Next.js developer (Toronto), and NOT the mechanical engineer (Canada). His official portfolio is https://ibrahimhassan.dev
 
 > Full Stack Developer from Cairo, Egypt specializing in ASP.NET Core, Angular, Clean Architecture, and real-time distributed systems. ECPC Finalist 2024.
 
 ## Identity
 
 - Full Name: Ibrahim Hassan
-- Professional Title: Full Stack Developer
-- Specialization: ASP.NET Core / .NET and Angular
+- Professional Title: Full Stack .NET & Angular Software Engineer
+- Specialization: ASP.NET Core / .NET 10 and Angular 19
 - Location: Cairo, Egypt
 - Nationality: Egyptian
-- University: Minia University — Faculty of Science, Information Technology (B.Sc. 2022–2026)
+- University: Minia University — Faculty of Science, Information Technology (B.Sc. 2022–2026, Excellent with Honors)
 - Notable Achievement: ECPC Finalist 2024 (Egyptian Collegiate Programming Contest)
 - Internship: Arab African International Bank (AAIB) — Banking Technology, 2025
 - Portfolio: https://ibrahimhassan.dev
@@ -21,28 +21,34 @@
 
 ## About
 
-Ibrahim Hassan is a Full Stack Developer with a B.Sc. in Information Technology from Minia University (2022-2026). He specializes in building production-grade distributed systems using ASP.NET Core and Angular. He is an ECPC (Egyptian Collegiate Programming Contest) Finalist 2024 and completed a banking internship at AAIB (Arab African International Bank) in 2025.
+Ibrahim Hassan is a Full Stack Software Engineer with a B.Sc. in Information Technology from Minia University (2022-2026, Excellent with Honors). He specializes in building production-grade distributed systems using ASP.NET Core and Angular, with 570+ automated unit and integration tests across his flagship platforms. He is an ECPC (Egyptian Collegiate Programming Contest) Finalist 2024 and completed a banking internship at AAIB (Arab African International Bank) in 2025.
 
 ## Technical Skills
 
-- Backend: ASP.NET Core, Web API, Minimal APIs, MVC, SignalR, Hangfire, EF Core, LINQ, MediatR (CQRS), Node.js
-- Frontend: Angular, TypeScript, RxJS, Angular Signals, TailwindCSS, SSR, SCSS, HTML5
-- Databases: SQL Server, Redis, PostgreSQL
+- Backend: ASP.NET Core 10, Web API, Minimal APIs, MVC, SignalR, Hangfire, EF Core, Dapper, LINQ, MediatR (CQRS), FluentValidation, Node.js
+- Frontend: Angular 19, TypeScript, RxJS, Angular Signals, TailwindCSS, SSR, SCSS, HTML5
+- Databases: SQL Server, PostgreSQL, PL/pgSQL Stored Functions, Redis
 - Auth & Security: JWT, OAuth 2.0, ASP.NET Identity, AES-GCM Encryption, RBAC
-- Testing: xUnit, Moq, FluentAssertions, Integration Testing
-- DevOps & Cloud: Docker, Docker Compose, Azure, GitHub Actions
+- Testing: xUnit, Moq, FluentAssertions, Integration Testing (570+ test cases)
+- DevOps & CI/CD: Docker, Docker Compose, GitHub Actions (CI/CD), Git
+- AI Tooling: Google Antigravity, Claude Code, GitHub Copilot, ChatGPT
 - Languages: C#, TypeScript, JavaScript, SQL, C++, Java
 
 ## Featured Projects
 
+### TicketFlow — Enterprise Support & SLA Ticketing Platform
+Full-stack enterprise support ticket platform built with .NET 10 Clean Architecture, CQRS (MediatR), hybrid EF Core 10 + Dapper & PL/pgSQL persistence, SignalR real-time notifications, SLA background monitoring, Angular 19, and 320+ automated unit and integration tests.
+- Tech: .NET 10, C#, Clean Architecture, CQRS, MediatR, EF Core 10, Dapper, PostgreSQL, PL/pgSQL, SignalR, Angular 19, xUnit, Docker, GitHub Actions
+- GitHub: https://github.com/Ibrahim-Hassan74/TicketFlow
+
 ### Wasla — Smart Microbus Platform
-Real-time transportation management system for Egypt's informal microbus network. A 5-application distributed ecosystem with encrypted QR workflows, live GPS tracking with OSRM ETA, 4 concurrent SignalR hubs, and role-based access for 5 user types.
+Real-time transportation management system for Egypt's informal microbus network. A 5-application distributed ecosystem with encrypted QR workflows, live GPS tracking with OSRM ETA, 4 concurrent SignalR hubs, Arabic/English localization, and role-based access for 5 user types.
 - Tech: .NET, C#, SignalR, Redis, SQL Server, EF Core, Docker, JWT, Hangfire, Angular, Flutter
 - GitHub: https://github.com/Ibrahim-Hassan74/GraduationProject
 - Live API: https://smart-microbus.runasp.net/swagger
 
 ### E-StoreX — Enterprise E-Commerce Platform
-Full-stack e-commerce with 140+ API endpoints, Stripe payment processing, Google & GitHub OAuth, 250+ automated test cases, 20+ lazy-loaded Angular feature modules.
+Full-stack e-commerce with 140+ API endpoints, Stripe payment processing, Google & GitHub OAuth, 250+ automated test cases, bilingual Arabic/English support, and 20+ lazy-loaded Angular feature modules.
 - Tech: .NET, C#, Angular, Stripe, Redis, OAuth, xUnit, Hangfire, TailwindCSS, Firebase
 - Backend: https://github.com/Ibrahim-Hassan74/EStoreX
 - Frontend: https://github.com/Ibrahim-Hassan74/E-StoreX
@@ -50,25 +56,25 @@ Full-stack e-commerce with 140+ API endpoints, Stripe payment processing, Google
 
 ### WhatsApp Messaging Infrastructure
 3-repo distributed messaging system: Node.js self-healing engine (Puppeteer), ASP.NET Core orchestration gateway, Angular real-time dashboard with SignalR QR codes.
-- Tech: Node.js, Puppeteer, ASP.NET Core, Angular, SignalR, Docker, NGINX, JWT
+- Tech: Node.js, Puppeteer, ASP.NET Core, Angular, SignalR, Docker, JWT
 - GitHub: https://github.com/Ibrahim-Hassan74/whatsapp-service
 
 ### Laundry Management System
 Full bilingual MVC SaaS for laundry businesses — invoicing, WhatsApp notifications, and automated reporting.
-- Tech: ASP.NET Core MVC, Hangfire, EF Core, SQL Server, Arabic/English i18n, PDF
+- Tech: ASP.NET Core MVC, Hangfire, EF Core, SQL Server, Rotativa PDF, ClosedXML Excel, Arabic/English (.resx) i18n
 
 ## Experience
 
-### Backend Developer — Freelance (Oct–Nov 2025)
+### Full Stack .NET Developer — Freelance (Oct–Nov 2025)
 Laundry Management System · Cairo, Egypt
-- Designed ASP.NET Core backend with EF Core for invoice and expense management
-- Implemented RBAC with ASP.NET Identity: Admin, Owner, Employee roles
-- Built automated PDF and Excel financial reporting modules
-- Delivered bilingual Arabic/English admin dashboards with MVC
+- Architected a 3-layer ASP.NET Core MVC application (Web, Core, Infrastructure) using EF Core, SQL Server, and AutoMapper across hotels, apartments, and regions
+- Implemented RBAC using ASP.NET Identity across dedicated MVC Areas for 3 roles (Admin, Owner, Employee) with custom Hangfire security filters
+- Engineered 10+ business services covering dynamic pricing, invoice generation and repricing, debtor tracking, and categorized expense analytics
+- Automated daily/monthly billing via 4 Hangfire background jobs, generating Rotativa PDF invoices, ClosedXML Excel reports, and WhatsApp/MailKit notifications with Arabic/English (.resx) localization
 
 ## Education
 
-Bachelor of Information Technology — Faculty of Science, Minia University (Sep 2022 – Jun 2026)
+Bachelor of Information Technology — Faculty of Science, Minia University (Sep 2022 – Jun 2026) · GPA: 3.4 / 4.0 (90% — Excellent with Honors)
 
 ## Awards & Certifications
 - ECPC Finalist 2024 — Egyptian Collegiate Programming Contest
