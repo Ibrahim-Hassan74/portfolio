@@ -1,166 +1,407 @@
-<section id="projects" class="relative border-t border-border-subtle py-24">
+<section id="projects" class="relative border-t border-border-subtle py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="projects-header max-w-2xl opacity-0">
-      <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-        Featured <span class="text-accent">Projects</span>
-      </h2>
-      <p class="mt-3 text-sm text-text-secondary sm:text-base">
-        Production systems, not tutorials
-      </p>
-    </div>
+    <!-- Section Header + Category Tabs -->
+    <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm font-semibold text-accent">&lt; Production Systems /&gt;</p>
+        <h2 class="mt-2 text-3xl font-black tracking-tight text-text-primary sm:text-4xl">
+          Featured <span class="text-gradient-aurora">Projects</span>
+        </h2>
+        <p class="mt-2 text-sm text-text-secondary sm:text-base">
+          Select a system to inspect its architecture, engineering metrics, and live deployments
+        </p>
+      </div>
 
-    <div class="projects-tabs mt-8 flex flex-wrap gap-2 opacity-0">
-      @for (tab of tabs; track tab.value) {
-        <button
-          type="button"
-          (click)="setTab(tab.value)"
-          class="rounded-full px-4 py-2 text-sm font-medium transition-all"
-          [class.bg-accent]="activeTab() === tab.value"
-          [class.text-white]="activeTab() === tab.value"
-          [class.text-text-secondary]="activeTab() !== tab.value"
-          [class.hover:text-text-primary]="activeTab() !== tab.value"
-        >
-          {{ tab.label }}
-        </button>
-      }
+      <div class="flex flex-wrap gap-1.5 rounded-2xl border border-border-subtle bg-surface p-1.5 backdrop-blur-md">
+        @for (tab of tabs; track tab.value) {
+          <button
+            type="button"
+            (click)="setTab(tab.value)"
+            class="rounded-xl px-3.5 py-2 text-xs font-bold transition-all sm:text-sm"
+            [class.btn-aurora]="activeTab() === tab.value"
+            [class.text-white]="activeTab() === tab.value"
+            [class.text-text-secondary]="activeTab() !== tab.value"
+            [class.hover:text-text-primary]="activeTab() !== tab.value"
+          >
+            {{ tab.label }}
+          </button>
+        }
+      </div>
     </div>
 
     @if (filteredProjects().length) {
-      <div class="projects-carousel relative mt-10 w-full group mb-12 flex flex-col opacity-0">
-        <!-- Pagination placed before Swiper for DOM parsing timing, but ordered visually below it -->
-        <div class="custom-featured-pagination mt-8 flex w-full justify-center gap-2 order-2"></div>
+      <!-- =================================================================
+           DESKTOP MASTER-DETAIL SPLIT SHOWCASE (Zero Vertical Scroll!)
+           ================================================================= -->
+      <div class="mt-10 hidden lg:grid lg:grid-cols-12 lg:items-start lg:gap-7">
+        <!-- Left Rail: Compact Project Selector List (5 cols) -->
+        <div class="flex flex-col gap-3 lg:col-span-5">
+          @for (project of filteredProjects(); track project.id; let i = $index) {
+            <button
+              type="button"
+              (click)="selectProject(project.id)"
+              class="group relative flex w-full flex-col rounded-2xl border p-4 text-left transition-all duration-200"
+              [class.border-accent]="activeProject()?.id === project.id"
+              [class.bg-surface]="activeProject()?.id === project.id"
+              [class.shadow-lg]="activeProject()?.id === project.id"
+              [class.border-border-subtle]="activeProject()?.id !== project.id"
+              [class.bg-elevated]="activeProject()?.id !== project.id"
+              [class.opacity-75]="activeProject()?.id !== project.id"
+              [class.hover:opacity-100]="activeProject()?.id !== project.id"
+              [class.hover:border-accent]="activeProject()?.id !== project.id"
+            >
+              @if (activeProject()?.id === project.id) {
+                <span class="absolute left-0 top-3 bottom-3 w-1 rounded-r-full bg-accent"></span>
+              }
 
-        <!-- Custom Prev Arrow (Desktop only) -->
-        <button
-          aria-label="Previous project"
-          class="custom-prev absolute top-1/2 -left-12 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border-subtle bg-surface text-text-secondary shadow-lg transition-all hover:border-accent hover:text-accent disabled:opacity-50 disabled:cursor-not-allowed md:flex lg:-left-16"
-        >
-          <lucide-icon name="chevron-left" [size]="24" />
-        </button>
+              <div class="flex w-full items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5">
+                  <span
+                    class="flex h-6 w-6 items-center justify-center rounded-md font-mono text-xs font-bold"
+                    [class.btn-aurora]="activeProject()?.id === project.id"
+                    [class.text-white]="activeProject()?.id === project.id"
+                    [class.bg-surface]="activeProject()?.id !== project.id"
+                    [class.text-text-muted]="activeProject()?.id !== project.id"
+                  >
+                    {{ formatIndex(i) }}
+                  </span>
+                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-accent">
+                    {{ project.badge }}
+                  </span>
+                </div>
 
-        <!-- Custom Next Arrow (Desktop only) -->
-        <button
-          aria-label="Next project"
-          class="custom-next absolute top-1/2 -right-12 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border-subtle bg-surface text-text-secondary shadow-lg transition-all hover:border-accent hover:text-accent disabled:opacity-50 disabled:cursor-not-allowed md:flex lg:-right-16"
-        >
-          <lucide-icon name="chevron-right" [size]="24" />
-        </button>
+                <div class="flex items-center gap-2">
+                  @if (project.live) {
+                    <span class="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-[10px] font-semibold text-success">
+                      <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+                      Live
+                    </span>
+                  }
+                  <lucide-icon
+                    name="chevron-right"
+                    [size]="16"
+                    class="transition-transform duration-200"
+                    [class.translate-x-1]="activeProject()?.id === project.id"
+                    [class.text-accent]="activeProject()?.id === project.id"
+                    [class.text-text-muted]="activeProject()?.id !== project.id"
+                  />
+                </div>
+              </div>
 
-        <swiper-container
-          #featuredSwiper
-          class="cursor-grab active:cursor-grabbing w-full order-1"
-          slides-per-view="1"
-          space-between="24"
-          loop="true"
-          autoplay="true"
-          autoplay-delay="4000"
-          autoplay-disable-on-interaction="false"
-          navigation="true"
-          navigation-next-el=".custom-next"
-          navigation-prev-el=".custom-prev"
-          pagination="true"
-          pagination-el=".custom-featured-pagination"
-          pagination-clickable="true"
-          breakpoints='{"1024": {"slidesPerView": 2}}'
-        >
-          @for (project of filteredProjects(); track project.id) {
-            <swiper-slide style="height: auto;">
-              <app-project-card [project]="project" class="block h-full" />
-            </swiper-slide>
+              <h3 class="mt-2 text-base font-bold text-text-primary group-hover:text-accent">
+                {{ project.title }}
+              </h3>
+              <p class="mt-1 line-clamp-1 text-xs text-text-secondary">
+                {{ project.oneLiner }}
+              </p>
+            </button>
           }
-        </swiper-container>
+        </div>
+
+        <!-- Right Stage: Active Project Full Architectural Card (7 cols) -->
+        <div class="lg:col-span-7">
+          @if (activeProject(); as selected) {
+            <app-project-card [project]="selected" [index]="activeProjectIndex()" class="block" />
+          }
+        </div>
+      </div>
+
+      <!-- =================================================================
+           MOBILE / TABLET COMPACT ACCORDION CARDS (Minimal Scroll!)
+           ================================================================= -->
+      <div class="mt-8 flex flex-col gap-3.5 lg:hidden">
+        @for (project of filteredProjects(); track project.id; let i = $index) {
+          <div
+            class="overflow-hidden rounded-2xl border bg-surface transition-all"
+            [class.border-accent]="mobileExpandedId() === project.id"
+            [class.border-border-subtle]="mobileExpandedId() !== project.id"
+          >
+            <!-- Compact Tappable Header -->
+            <button
+              type="button"
+              (click)="toggleMobileProject(project.id)"
+              class="flex w-full flex-col gap-2 p-4 text-left"
+            >
+              <div class="flex w-full items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="flex h-6 w-6 items-center justify-center rounded-md font-mono text-xs font-bold"
+                    [class.btn-aurora]="mobileExpandedId() === project.id"
+                    [class.text-white]="mobileExpandedId() === project.id"
+                    [class.bg-elevated]="mobileExpandedId() !== project.id"
+                    [class.text-text-muted]="mobileExpandedId() !== project.id"
+                  >
+                    {{ formatIndex(i) }}
+                  </span>
+                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-accent">
+                    {{ project.badge }}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  @if (project.live) {
+                    <span class="inline-flex items-center gap-1 rounded-full border border-border-subtle bg-elevated px-2 py-0.5 text-[10px] font-semibold text-success">
+                      <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+                      Live
+                    </span>
+                  }
+                  <span class="rounded-lg bg-elevated px-2 py-1 font-mono text-[10px] font-semibold text-text-secondary">
+                    {{ mobileExpandedId() === project.id ? 'Hide' : 'Details' }}
+                  </span>
+                </div>
+              </div>
+
+              <h3 class="text-base font-extrabold text-text-primary">
+                {{ project.title }}
+              </h3>
+              <p class="text-xs leading-relaxed text-text-secondary">
+                {{ project.oneLiner }}
+              </p>
+
+              @if (mobileExpandedId() !== project.id) {
+                <div class="mt-1 flex flex-wrap gap-1.5">
+                  @for (tech of project.techStack.slice(0, 5); track tech) {
+                    <span class="rounded-md border border-border-subtle bg-elevated px-2 py-0.5 font-mono text-[10px] text-text-secondary">
+                      {{ tech }}
+                    </span>
+                  }
+                  @if (project.techStack.length > 5) {
+                    <span class="rounded-md bg-elevated px-2 py-0.5 font-mono text-[10px] font-semibold text-accent">
+                      +{{ project.techStack.length - 5 }} more
+                    </span>
+                  }
+                </div>
+              }
+            </button>
+
+            <!-- Expanded Full Details Body -->
+            @if (mobileExpandedId() === project.id) {
+              <div class="border-t border-border-subtle px-4 pb-5 pt-4">
+                <p class="text-xs leading-relaxed text-text-secondary sm:text-sm">
+                  {{ project.description }}
+                </p>
+
+                @if (project.achievements.length) {
+                  <ul class="mt-3.5 space-y-2 rounded-xl border border-border-subtle bg-elevated p-3.5">
+                    @for (ach of project.achievements; track ach) {
+                      <li class="flex items-start gap-2 text-xs leading-relaxed text-text-secondary">
+                        <lucide-icon name="check-circle" [size]="14" class="mt-0.5 shrink-0 text-success" />
+                        <span>{{ ach }}</span>
+                      </li>
+                    }
+                  </ul>
+                }
+
+                @if (project.achievementGroups?.length) {
+                  <div class="mt-3.5 space-y-2.5">
+                    @for (group of project.achievementGroups; track group.label) {
+                      <div class="rounded-xl border border-border-subtle bg-elevated p-3.5">
+                        <p class="mb-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-accent">
+                          {{ group.label }}
+                        </p>
+                        <ul class="space-y-1.5">
+                          @for (item of group.items; track item) {
+                            <li class="flex items-start gap-2 text-xs leading-relaxed text-text-secondary">
+                              <lucide-icon name="check-circle" [size]="14" class="mt-0.5 shrink-0 text-success" />
+                              <span>{{ item }}</span>
+                            </li>
+                          }
+                        </ul>
+                      </div>
+                    }
+                  </div>
+                }
+
+                <div class="mt-3.5 flex flex-wrap gap-1.5">
+                  @for (tech of project.techStack; track tech) {
+                    <span class="rounded-md border border-border-subtle bg-elevated px-2 py-0.5 font-mono text-[10px] font-medium text-text-secondary">
+                      {{ tech }}
+                    </span>
+                  }
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-2 pt-2">
+                  @for (live of project.liveLinks; track live.url) {
+                    <a
+                      [href]="live.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-aurora inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-white"
+                    >
+                      <lucide-icon name="external-link" [size]="14" />
+                      {{ live.label }}
+                    </a>
+                  }
+                  @for (gh of project.githubLinks; track gh.url) {
+                    <a
+                      [href]="gh.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5 rounded-xl border border-border-subtle bg-elevated px-3 py-2 text-xs font-semibold text-text-primary"
+                    >
+                      <lucide-icon name="github" [size]="14" />
+                      {{ gh.label }}
+                    </a>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
       </div>
     } @else {
       <p class="mt-10 text-sm text-text-muted">No projects in this category yet.</p>
     }
 
-    <div class="projects-small-header mt-24 opacity-0">
-      <h3 class="text-2xl font-bold tracking-tight text-text-primary mb-10">
-        Also Worth <span class="text-accent">Seeing</span>
-      </h3>
-      
-      <div class="projects-small-carousel relative w-full group mb-12 flex flex-col opacity-0">
-        <!-- Pagination placed before Swiper for DOM parsing timing, but ordered visually below it -->
-        <div class="custom-small-pagination mt-8 flex w-full justify-center gap-2 order-2"></div>
+    <!-- =================================================================
+         MORE ENGINEERING WORK (Clean Compact Rows on Mobile, 2x2 Bento on Desktop)
+         ================================================================= -->
+    <div class="mt-14">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-xl font-black tracking-tight text-text-primary sm:text-2xl">
+            More <span class="text-gradient-aurora">Engineering Work</span>
+          </h3>
+          <p class="mt-1 text-xs text-text-secondary sm:text-sm">
+            Focused APIs, testing suites, and foundational systems
+          </p>
+        </div>
+      </div>
 
-        <!-- Custom Prev Arrow -->
-        <button
-          aria-label="Previous small project"
-          class="custom-prev-small absolute top-1/2 -left-12 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border-subtle bg-surface text-text-secondary shadow-lg transition-all hover:border-accent hover:text-accent disabled:opacity-50 disabled:cursor-not-allowed md:flex lg:-left-16"
-        >
-          <lucide-icon name="chevron-left" [size]="24" />
-        </button>
-
-        <!-- Custom Next Arrow -->
-        <button
-          aria-label="Next small project"
-          class="custom-next-small absolute top-1/2 -right-12 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border-subtle bg-surface text-text-secondary shadow-lg transition-all hover:border-accent hover:text-accent disabled:opacity-50 disabled:cursor-not-allowed md:flex lg:-right-16"
-        >
-          <lucide-icon name="chevron-right" [size]="24" />
-        </button>
-
-        <swiper-container
-          class="cursor-grab active:cursor-grabbing w-full order-1"
-          slides-per-view="1"
-          space-between="24"
-          loop="true"
-          autoplay="true"
-          autoplay-delay="4000"
-          autoplay-disable-on-interaction="false"
-          navigation="true"
-          navigation-next-el=".custom-next-small"
-          navigation-prev-el=".custom-prev-small"
-          pagination="true"
-          pagination-el=".custom-small-pagination"
-          pagination-clickable="true"
-          breakpoints='{"768": {"slidesPerView": 2}, "1024": {"slidesPerView": 3}}'
-        >
+      <!-- Mobile View: Sleek Compact Accordion List (Zero Horizontal Scroll, Perfectly Aligned Columns) -->
+      <div class="mt-5 flex flex-col gap-2.5 sm:hidden">
         @for (small of smallProjects; track small.title) {
-          <swiper-slide style="height: auto;">
-            <article
-              class="flex h-full flex-col rounded-2xl border border-border-subtle bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50"
-            >
-              <div class="flex flex-wrap gap-1.5">
-                @for (tech of small.tech; track tech) {
-                  <span
-                    class="rounded-md border border-border-subtle bg-elevated px-2 py-0.5 font-mono text-[10px] text-text-secondary"
-                  >
-                    {{ tech }}
-                  </span>
-                }
-              </div>
-              <h4 class="mt-4 text-lg font-semibold text-text-primary">{{ small.title }}</h4>
-              <p class="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
-                {{ small.description }}
-              </p>
-              <div class="mt-5 flex flex-wrap gap-3">
+          <div
+            class="overflow-hidden rounded-2xl border bg-surface transition-all"
+            [class.border-accent]="expandedSmallTitle() === small.title"
+            [class.border-border-subtle]="expandedSmallTitle() !== small.title"
+          >
+            <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3">
+              <button
+                type="button"
+                (click)="toggleSmallProject(small.title)"
+                class="flex min-w-0 items-center gap-3 text-left"
+              >
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-elevated text-accent">
+                  <lucide-icon name="code-2" [size]="16" />
+                </span>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2">
+                    <h4 class="truncate text-sm font-bold text-text-primary">
+                      {{ small.title }}
+                    </h4>
+                    @if (small.live) {
+                      <span class="shrink-0 rounded-full bg-success/15 px-1.5 py-0.5 font-mono text-[9px] font-bold text-success">
+                        LIVE
+                      </span>
+                    }
+                  </div>
+                  <p class="mt-0.5 truncate font-mono text-[10px] text-text-muted">
+                    {{ small.tech.slice(0, 3).join(' · ') }}
+                  </p>
+                </div>
+              </button>
+
+              <div class="flex shrink-0 items-center justify-end gap-1.5">
                 <a
                   [href]="small.github"
                   target="_blank"
                   rel="noopener noreferrer"
-                  magnetic
-                  class="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-3 py-1.5 text-sm font-medium text-text-primary transition-colors hover:border-accent/50 hover:text-accent"
+                  aria-label="GitHub"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border-subtle bg-elevated text-text-primary transition-colors hover:border-accent hover:text-accent"
                 >
                   <lucide-icon name="github" [size]="15" />
-                  GitHub
                 </a>
+                <button
+                  type="button"
+                  (click)="toggleSmallProject(small.title)"
+                  aria-label="Toggle description"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border-subtle bg-elevated text-text-secondary transition-colors hover:text-text-primary"
+                >
+                  <lucide-icon
+                    name="chevron-right"
+                    [size]="15"
+                    class="transition-transform duration-200"
+                    [class.rotate-90]="expandedSmallTitle() === small.title"
+                  />
+                </button>
+              </div>
+            </div>
+
+            @if (expandedSmallTitle() === small.title) {
+              <div class="border-t border-border-subtle bg-elevated px-4 py-3.5">
+                <p class="text-xs leading-relaxed text-text-secondary">
+                  {{ small.description }}
+                </p>
+                <div class="mt-2.5 flex flex-wrap gap-1.5">
+                  @for (tech of small.tech; track tech) {
+                    <span class="rounded-md border border-border-subtle bg-surface px-2 py-0.5 font-mono text-[10px] font-semibold text-accent">
+                      {{ tech }}
+                    </span>
+                  }
+                </div>
                 @if (small.live) {
-                  <a
-                    [href]="small.live"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    magnetic
-                    class="inline-flex items-center gap-2 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
-                  >
-                    <lucide-icon name="external-link" [size]="15" />
-                    Live Demo
-                  </a>
+                  <div class="mt-3 pt-1">
+                    <a
+                      [href]="small.live"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-aurora inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold text-white"
+                    >
+                      <lucide-icon name="external-link" [size]="13" />
+                      Open Live Demo
+                    </a>
+                  </div>
                 }
               </div>
-            </article>
-          </swiper-slide>
+            }
+          </div>
         }
-      </swiper-container>
+      </div>
+
+      <!-- Tablet & Desktop View: Clean 2-col / 4-col Grid -->
+      <div class="mt-6 hidden gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+        @for (small of smallProjects; track small.title) {
+          <article
+            class="glass-card flex h-full flex-col rounded-2xl p-5"
+          >
+            <div class="flex flex-wrap gap-1.5">
+              @for (tech of small.tech; track tech) {
+                <span
+                  class="rounded-md border border-border-subtle bg-elevated px-2 py-0.5 font-mono text-[10px] font-semibold text-accent"
+                >
+                  {{ tech }}
+                </span>
+              }
+            </div>
+            <h4 class="mt-3.5 text-base font-bold text-text-primary">{{ small.title }}</h4>
+            <p class="mt-1.5 flex-1 text-xs leading-relaxed text-text-secondary">
+              {{ small.description }}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 border-t border-border-subtle pt-3.5">
+              @if (small.live) {
+                <a
+                  [href]="small.live"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-aurora inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold text-white"
+                >
+                  <lucide-icon name="external-link" [size]="12" />
+                  Live Demo
+                </a>
+              }
+              <a
+                [href]="small.github"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-border-subtle bg-elevated px-3 py-1.5 text-xs font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent"
+              >
+                <lucide-icon name="github" [size]="12" />
+                GitHub
+              </a>
+            </div>
+          </article>
+        }
       </div>
     </div>
   </div>

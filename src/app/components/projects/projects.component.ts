@@ -1,31 +1,28 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, CUSTOM_ELEMENTS_SCHEMA, ViewChild, computed, inject, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { ProjectCardComponent } from './project-card/project-card.component';
-import { MagneticDirective } from '../../directives/magnetic.directive';
 import {
   PROJECTS,
   PROJECT_TABS,
+  Project,
   ProjectCategory,
   SMALL_PROJECTS,
 } from '../../data/portfolio.data';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { GSAP_EASING } from '../../utils/gsap.utils';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [LucideAngularModule, ProjectCardComponent, MagneticDirective],
+  imports: [LucideAngularModule, ProjectCardComponent],
   templateUrl: './projects.component.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ProjectsComponent implements AfterViewInit, OnDestroy {
+export class ProjectsComponent {
   readonly tabs = PROJECT_TABS;
   readonly smallProjects = SMALL_PROJECTS;
 
-  @ViewChild('featuredSwiper') featuredSwiper?: ElementRef<any>;
-
   activeTab = signal<'all' | ProjectCategory>('all');
+  selectedProjectId = signal<string>(PROJECTS[0]?.id ?? '');
+  mobileExpandedId = signal<string | null>(PROJECTS[0]?.id ?? null);
+  expandedSmallTitle = signal<string | null>(null);
 
   filteredProjects = computed(() => {
     const tab = this.activeTab();
@@ -33,98 +30,43 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     return PROJECTS.filter((p) => p.categories.includes(tab));
   });
 
-  private el = inject(ElementRef);
-  private zone = inject(NgZone);
-  private ctx!: gsap.Context;
+  activeProject = computed<Project | undefined>(() => {
+    const list = this.filteredProjects();
+    if (!list.length) return undefined;
+    const found = list.find((p) => p.id === this.selectedProjectId());
+    return found ?? list[0];
+  });
 
-  ngAfterViewInit() {
-    if (typeof window === 'undefined') return;
-
-    this.zone.runOutsideAngular(() => {
-      this.ctx = gsap.context(() => {
-        
-        // Featured Projects Section
-        const tlFeatured = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.projects-header',
-            endTrigger: this.el.nativeElement,
-            start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
-          }
-        });
-
-        tlFeatured.to('.projects-header', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: GSAP_EASING.elegant
-        })
-        .to('.projects-tabs', {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: GSAP_EASING.snappy
-        }, '-=0.3')
-        .to('.projects-carousel', {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: GSAP_EASING.elegant
-        }, '-=0.2')
-        .from('.projects-carousel .project-card', {
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: GSAP_EASING.bouncy
-        }, '-=0.2');
-
-        // Small Projects Section
-        const tlSmall = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.projects-small-header',
-            endTrigger: this.el.nativeElement,
-            start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
-          }
-        });
-
-        tlSmall.to('.projects-small-header', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: GSAP_EASING.elegant
-        })
-        .to('.projects-small-carousel', {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: GSAP_EASING.elegant
-        }, '-=0.3')
-        .from('.projects-small-carousel .project-card', {
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: GSAP_EASING.bouncy
-        }, '-=0.2');
-
-      }, this.el.nativeElement);
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.ctx) this.ctx.revert();
-  }
+  activeProjectIndex = computed<number>(() => {
+    const list = this.filteredProjects();
+    const active = this.activeProject();
+    if (!active) return 0;
+    const idx = list.findIndex((p) => p.id === active.id);
+    return idx >= 0 ? idx : 0;
+  });
 
   setTab(tab: 'all' | ProjectCategory): void {
     this.activeTab.set(tab);
-    
-    // Reset the Swiper to the first slide instantly when changing categories
-    setTimeout(() => {
-      if (this.featuredSwiper?.nativeElement?.swiper) {
-        this.featuredSwiper.nativeElement.swiper.slideTo(0, 0);
-      }
-    });
+    const list = tab === 'all' ? PROJECTS : PROJECTS.filter((p) => p.categories.includes(tab));
+    if (list.length) {
+      this.selectedProjectId.set(list[0].id);
+      this.mobileExpandedId.set(list[0].id);
+    }
+  }
+
+  selectProject(id: string): void {
+    this.selectedProjectId.set(id);
+  }
+
+  toggleMobileProject(id: string): void {
+    this.mobileExpandedId.update((current) => (current === id ? null : id));
+  }
+
+  toggleSmallProject(title: string): void {
+    this.expandedSmallTitle.update((current) => (current === title ? null : title));
+  }
+
+  formatIndex(i: number): string {
+    return (i + 1).toString().padStart(2, '0');
   }
 }
